@@ -79,7 +79,7 @@ let createtask = function(
   //for checkbox state
   checkbox.addEventListener("change", (event) => {
     if (event.target.checked) {
-      checkbox.parentElement.style.backgroundColor = "green";
+      checkbox.parentElement.style.backgroundColor = '#94ff83';
       saveTasks();
     } else {
       checkbox.parentElement.style.backgroundColor = null;
