@@ -1,5 +1,6 @@
 let apiURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-let apiKey = "Your API Key";
+
+
 
 const searchBar = document.querySelector("input[type = search]");
 const searchBtn = document.getElementById("searchBtn");
