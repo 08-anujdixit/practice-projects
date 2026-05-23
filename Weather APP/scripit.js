@@ -1,8 +1,5 @@
 let apiURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-let apiKey = "7efb97e5db19d4b80a1efffeebc5c34e";
-//let apiCURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey} `
-
-// //7efb97e5db19d4b80a1efffeebc5c34e //&appid=
+let apiKey = "Your API Key";
 
 const searchBar = document.querySelector("input[type = search]");
 const searchBtn = document.getElementById("searchBtn");
