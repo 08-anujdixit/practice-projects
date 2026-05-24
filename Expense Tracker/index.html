@@ -1,69 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <h1>Expense Tracker</h1>
     <div class="mainContainer">
-        <form action="">
-            <input id="expenseName" type="text" placeholder="Expense Name">
-            <input id="amountEntry" type="number" placeholder="Enter Amount">
-            <select id = "selectCatagory" name="">
-                <option value="">Select Category</option>
-                <option value="">Travel</option>
-                <option value="">Food</option>
-                <option value="">Study</option>
-                <option value="">Entertainment</option>
-                <option value="">Other</option>
-            </select>
-            <input  type="date" id="dateField">
-            <button id="submitBtn" type="submit">Add Expense</button>
-        </form>
-        <div class="totalExpense">
-            <h3>Total: </h3><p>$40</p>
-        </div>
-        <div class="filterBar">
-            <h5>Filter By Catagory</h5> 
-            <select name="" id="">
-             <option value="">All</option>
-            </select>
-        </div>
+      <form>
+        <input id="expenseName" type="text" placeholder="Expense Name" />
+        <input id="amountEntry" type="number" placeholder="Enter Amount" />
+        <select id="selectCatagory">
+          <option value="none">Select Category</option>
+          <option value="Travel">Travel</option>
+          <option value="Food">Food</option>
+          <option value="Study">Study</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="date" id="dateField" />
+        <button id="submitBtn" type="submit">Add Expense</button>
+      </form>
+      <div id="totalExpense">
+        <h3>Total:</h3>
+        <p>$40</p>
+      </div>
 
-        <div class="expenseList">
-
-            <div class="expenseHeaderRow">
-                <div class="headerItem">Expense Name</div>
-                <div class="headerItem">Amount</div>
-                <div class="headerItem">Category</div>
-                <div class="headerItem">Date</div>
-                <div class="headerItem">Actions</div>
-            </div>
-            <!-- In case of no expense -->
-            <div class="emptyState">
-                <h3>No Expense Added Yet</h3>
-            </div>
-            <!-- Will be created with dynamic js -->
-             <div class="rowContainer">
-                <div class="expenseRow">
+      <div class="expenseList">
+        <div class="expenseHeaderRow">
+          <div class="headerItem">Expense Name</div>
+          <div class="headerItem">Amount</div>
+          <div class="headerItem">Category</div>
+          <div class="headerItem">Date</div>
+          <div class="headerItem">Actions</div>
+        </div>
+        <!-- In case of no expense -->
+        <div id="emptyState">
+          <h3>No Expense Added Yet</h3>
+        </div>
+        <!-- Will be created with dynamic js -->
+        <div id="rowContainer" class="rowContainer">
+          <!-- <div class="expenseRow">
 
                     <div>Travel</div>
                     <div>$40</div>
                     <div>Transport</div>
                     <div>2022-02-08</div>
                     <div>
-                        <button id="editBtn">Edit</button>
-                        <button id="delBtn">Delete</button>
+                        <button class="editBtn">Edit</button>
+                        <button class="delBtn">Delete</button>
                     </div>
-                </div>
-             </div>
+                </div> -->
         </div>
-         <!-- After last expense row -->
+      </div>
+      <!-- After last expense row -->
     </div>
-    
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

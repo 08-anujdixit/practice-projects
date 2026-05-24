@@ -19,22 +19,12 @@ h1 {
 
   padding: 1em;
   margin: 2em auto;
-
-  /* display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center; */
 }
-.mainContainer form {
-  border: 2px solid white;
-  border-radius: 5px;
-  /* box-sizing: border-box; */
+ form {
   display: flex;
-  justify-content: space-evenly;
-  padding: 1%;
-
-  height: 7%;
-  margin: 0.5em;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
 }
 
 #expenseName {
@@ -69,43 +59,31 @@ h1 {
 }
 
 #submitBtn {
-  padding: 1%;
-  font-family: monospace;
-  cursor: pointer;
-  border: 2px solid rgb(41, 111, 0);
-  border-radius: 3px;
+  width: 100px;   /* fixed width */
+  height: 35px;
+  text-align: center;
 }
+
 #submitBtn:hover {
   background-color: rgb(169, 255, 120);
   color: rgb(0, 20, 1);
 }
 
-.totalExpense {
+#totalExpense {
   border: 2px solid rgba(255, 255, 255, 0);
   width: 40%;
   height: 3em;
   padding: 0.2em;
   margin: 1em;
-}
-
-.filterBar {
-  border: 2px solid rgba(255, 255, 255, 0);
-  width: 40%;
-  height: 3em;
-  padding: 0.2em;
-  margin: 1em;
-}
-.filterBar h5 {
-  margin-bottom: 4px;
 }
 
 .expenseList {
   border: 2px solid white;
-  height: 70%;
+  height: 85%;
   width: 100%;
   padding: 1em;
   box-sizing: border-box;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 .expenseHeaderRow {
   border: 1px solid white;
@@ -117,7 +95,7 @@ h1 {
   text-align: center;
 }
 
-.emptyState {
+#emptyState {
   margin: 0.5em;
   text-align: center;
 }
@@ -138,22 +116,22 @@ h1 {
   text-align: center;
 }
 
-#editBtn {
+.editBtn {
   width: 40%;
   padding: 1px;
   border-radius: 2px;
   cursor: pointer;
 }
-#editBtn:hover{
+.editBtn:hover{
   background-color: rgb(161, 197, 255);
 }
-#delBtn {
+.delBtn {
   width: 50%;
   padding: 1px;
   border-radius: 2px;
   cursor: pointer;
 }
-#delBtn:hover{
+.delBtn:hover{
   background-color: rgb(255, 55, 55);
 }
 
