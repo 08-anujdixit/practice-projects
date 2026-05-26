@@ -1,98 +1,113 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: black;
-    color: aliceblue;
+body {
+  background-color: black;
+  color: aliceblue;
 }
 
-nav{
-    background-color: rgb(47, 66, 91);
-    height: 5vh;
-
-    display: flex;
-    align-items: center;
-
-    padding: 2em;
-    margin-bottom: 0.5em;
+nav {
+  background-color: rgb(47, 66, 91);
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  padding: 2em;
+  margin-bottom: 0.5em;
 }
-#searchDiv{
-    border: 2px solid rgba(255, 255, 255, 0);
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3em;
+#searchDiv {
+  border: 2px solid rgba(255, 255, 255, 0);
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
 }
-nav h2{
-    border: 2px solid rgb(255, 255, 255);
-    
-    border-radius: 49%;
-    background-color: black;
-    width: 8%;
-    text-align: center;
-    padding: 9px;
-    font-family: cursive;
-    margin: 5px;
+nav h2 {
+  border: 2px solid white;
+  background-color: black;
+  text-align: center;
+  font-family: cursive;
+  margin: 1px;
+  padding: 0.3em 0.8em;
+  width:30vh
 }
-
-#searchInput{
-    height: 2.5em;
-    width: 20%;
-    padding: 1em ;
-    font-family: cursive;
-    border: 2px solid rgb(0, 50, 138);
-    border-radius: 5px;
+#searchInput {
+  height: 2.5em;
+  width: 100%;
+  max-width: 400px;
+  padding: 1em;
+  font-family: cursive;
+  border: 2px solid rgb(0, 50, 138);
+  border-radius: 5px;
 }
-#searchBtn{
-    padding: 5px;
-    width: 2.5%;
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 2px;
-
-    cursor: pointer;
+#searchBtn {
+  padding: 8px 12px;
+  width: auto;
+  border: 1px solid black;
+  border-radius: 2px;
+  cursor: pointer;
 }
-#searchBtn:hover{
-    background-color: rgb(105, 162, 175);
+#searchBtn:hover {
+  background-color: rgb(105, 162, 175);
 }
 
-#foundMovie{
-    margin: 1em 0em 0em 1.5em;
-    font-size: x-large;
+#foundMovie {
+  margin: 1em 0em 0em 1.5em;
+  font-size: x-large;
 }
 
-main{
-    height: 80vh;
+ main{
+    min-height: 80vh;
     background-color: #0c1b2b22;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid black;
     margin: 2em;
     padding: 1em;
 
     display: grid;
-    grid-template-rows:  3fr  3fr;
-    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr 2fr;
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem;
 }
 
-.movieCard{
-    border-radius: 5px;
-    border: 2px solid rgb(32, 45, 72);
-    height: 100%;
-    width: 100%;
-    background-color: #1a242f;
-    padding: 0.3em;
-    overflow: hidden;
+.movieCard {
+  border-radius: 5px;
+  border: 2px solid rgb(32, 45, 72);
+  height: 100%;
+  width: 100%;
+  background-color: #1a242f;
+  padding: 0.3em;
+  overflow: hidden;
 }
-.movieCard img{
-    border-radius: 4px;
-    height: 83%;
-    width: 99%;
-    border: 2px solid black;
+.movieCard img {
+  border-radius: 4px;
+  height: 83%;
+  width: 99%;
+  border: 2px solid black;
 }
-.movieCard p{
-    font-size: larger;
+.movieCard p {
+  font-size: larger;
 }
 
+@media (max-width: 768px){
+
+    nav{
+        flex-direction: column;
+        height: auto;
+        gap: 0.8em;
+        padding: 1em;
+    }
+
+    #searchDiv{
+        width: 100%;
+    }
+
+    main{
+        margin: 1em;
+    }
+
+    .movieCard p{
+        font-size: 1rem;
+    }
+}
