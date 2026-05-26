@@ -77,7 +77,7 @@ function displayExpenseRow() {
     name.innerText = e.expenseName;
 
     let amountInput = document.createElement("div");
-    amountInput.innerText = e.amount;
+    amountInput.innerText = `₹ ${e.amount}`;
 
     let category = document.createElement("div");
     category.innerText = e.selectCategory;
@@ -99,7 +99,7 @@ function displayExpenseRow() {
     editBtn.addEventListener("click", function () {
       alert("Edit the details in form");
       expenseName.value = e.expenseName;
-      amount.value = e.amount;
+      amount.value =  e.amount;
       selectCategory.value = e.selectCategory;
       date.value = e.date;
 
@@ -131,7 +131,7 @@ function displayTotal() {
   expenses.forEach(function (e) {
     sum += Number(e.amount);
   });
-  totalAmount.innerText = `Rs ${sum}`;
+  totalAmount.innerText = `₹ ${sum}`;
 }
 
 function updateEmptyState() {

@@ -3,10 +3,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 body {
-  background-color: rgb(255, 243, 139);
-  color: rgb(0, 0, 0);
-  font: bold;
+  background-color: #0f172a;
+  color: white;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -14,171 +14,185 @@ h1 {
   text-align: center;
   margin: 1em auto;
 }
+
 .mainContainer {
-  border: 3px solid rgb(3, 2, 2);
-  height: 60vh;
-  width: 75vh;
-  background-color: rgb(187, 255, 124);
-  padding: 1em;
-  margin: 2em auto;
+  background-color: #1e293b;
+  border: 2px solid #334155;
+
+  width: min(95%, 900px);
+  min-height: 70vh;
+
+  margin: 2rem auto;
+  padding: 1rem;
 }
- form {
+
+form {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
 }
 
-#expenseName {
-  padding: 1%;
-  border: 1px solid black;
-  font-family: monospace;
-  border-radius: 3px;
-}
-#amountEntry {
-  padding: 1%;
-  width: 18%;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 3px;
-  font-family: monospace;
-}
-
-#selectCatagory {
-  padding: 1%;
-  font-size: x-small;
-  font-family: monospace;
-  cursor: pointer;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 3px;
-}
-
+#expenseName,
+#amountEntry,
+#selectCatagory,
 #dateField {
-  padding: 1%;
+  padding: 0.6rem;
+  border: 1px solid black;
+  border-radius: 4px;
   font-family: monospace;
-  cursor: pointer;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 3px;
+}
+
+#expenseName {
+  flex: 2;
+  min-width: 180px;
+}
+
+#amountEntry,
+#selectCatagory,
+#dateField {
+  flex: 1;
+  min-width: 120px;
 }
 
 #submitBtn {
-  width: 100px;   /* fixed width */
-  height: 35px;
-  text-align: center;
-    border: 1px solid black;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  border: 1px solid black;
 }
 
 #submitBtn:hover {
   background-color: rgb(169, 255, 120);
-  color: rgb(0, 20, 1);
 }
 
 #totalExpense {
-  border: 2px solid rgba(255, 255, 255, 0);
-  width: 40%;
-  height: 3em;
-  padding: 0.2em;
-  margin: 1em;
+  width: 100%;
+  margin: 1rem 0;
 }
 
 .expenseList {
-  border: 0px solid rgb(6, 4, 4);
-  height: 85%;
   width: 100%;
-  padding: 1em;
-  box-sizing: border-box;
-  
-}
-.expenseHeaderRow {
-  border: 2px solid rgb(0, 0, 0);
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  align-items: center;
-  padding: 1rem;
-  margin: 0.3em;
-  text-align: center;
-
-  background-color: white;
+  margin-top: 1rem;
 }
 
 #emptyState {
-  margin: 0.5em;
+  margin: 0.5rem;
   text-align: center;
-  
 }
 
 .rowContainer {
-  padding: 0.2em;
-    overflow-y: scroll;
-}
-.expenseRow {
-  border: 1px solid rgb(0, 0, 0);
-  width: 100%;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  align-items: center;
-  padding: 1rem;
-  background-color: white;
+  max-height: 450px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.expenseRow div {
+.expenseHeaderRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+
+  width: 100%;
+
+  padding: 1rem;
+  margin-bottom: 5px;
+
+  background: white;
+  border: 2px solid black;
+
+  text-align: center;
+  font-weight: bold;
+}
+
+
+
+.expenseRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+
+  width: 100%;
+
+  padding: 1rem;
+
+  background: white;
+  border: 1px solid black;
+
   text-align: center;
 }
 
-.editBtn {
-  width: 40%;
-  padding: 1px;
-  border-radius: 2px;
-  cursor: pointer;
-  margin-right: 1px;
+.expenseRow div,
+.expenseHeaderRow div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+    background-color: #f8fafc;
+  color: black;
 }
-.editBtn:hover{
+
+.editBtn,
+.delBtn {
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.editBtn:hover {
   background-color: rgb(161, 197, 255);
 }
-.delBtn {
-  width: 50%;
-  padding: 1px;
-  border-radius: 2px;
-  cursor: pointer;
-  margin-left: 1px;
-}
-.delBtn:hover{
+
+.delBtn:hover {
   background-color: rgb(255, 55, 55);
 }
 
-/* For responsiveness */
-@media screen and (width <= 600px) {
+@media (max-width: 768px) {
   .mainContainer {
-    height: 100vh;
-    width: 58vh;
+    width: 95%;
+    padding: 0.8rem;
+    margin: 1rem auto;
   }
 
-  .mainContainer form {
-    display: flex;
+  form {
     flex-direction: column;
-    height: 35%;
-    margin: 0.5em;
-    align-items: center;
-  }
-  #expenseName {
-    width: 75%;
-  }
-  #amountEntry {
-    width: 75%;
+    align-items: stretch;
   }
 
-  #selectCatagory {
-    width: 75%;
-  }
-
-  #dateField {
-    width: 75%;
-  }
+  #expenseName,
+  #amountEntry,
+  #selectCatagory,
+  #dateField,
   #submitBtn {
-    width: 40%;
+    width: 100%;
   }
 
-  .expenseList{
-    height: 47%;
-    font-size: x-small;
+  #totalExpense {
+    text-align: center;
+  }
+
+  .expenseHeaderRow,
+  .expenseRow {
+    padding: 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .editBtn,
+  .delBtn {
+    width: 100%;
+    font-size: 0.6rem;
+    padding: 2px;
+  }
+}
+
+/* VERY SMALL PHONES */
+
+@media (max-width: 480px) {
+  .expenseHeaderRow,
+  .expenseRow {
+    font-size: 0.6rem;
+    gap: 2px;
+  }
+
+  .editBtn,
+  .delBtn {
+    font-size: 0.5rem;
   }
 }
