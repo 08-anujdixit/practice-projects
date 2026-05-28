@@ -12,8 +12,8 @@ body {
 nav {
   background: linear-gradient(
     360deg,
-    rgb(169, 98, 152),
-    rgba(124, 0, 177, 0.999)
+    rgb(255, 142, 244),
+    rgba(221, 49, 255, 0.644)
   );
   display: flex;
   justify-content: space-between;
@@ -55,7 +55,7 @@ form #submitBtn {
   border: 2px solid rgb(0, 0, 0);
   transform: scale(1.2);
   padding: 0.3rem;
-  width: 3.3em;
+  max-width: 3.3em;
   background-color: #111;
   font-family: cursive;
 }
@@ -69,6 +69,8 @@ form #submitBtn {
 }
 .filterContainer p {
   margin: 0;
+  font-size: large;
+  font-family: cursive;
   font-weight: bold;
 }
 #categoryFilter,
@@ -158,12 +160,13 @@ form #submitBtn {
 
 /*Cart overlay*/
 #cartOverlay {
+
   position: fixed;
   inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.924);
   display: none; 
 
 }
@@ -176,6 +179,7 @@ form #submitBtn {
   width: 90%;
   max-width: 500px;
   background: #fff;
+  border: 2px solid purple;
   padding: 0;          
   border-radius: 12px;
   display: flex;
@@ -190,7 +194,7 @@ form #submitBtn {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #330033b1;
   flex-shrink: 0;   
 }
 

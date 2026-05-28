@@ -59,7 +59,7 @@ async function fetchProducts() {
    
   //Validation for empty input
   if (query === "") {
-    productGrid.innerHTML = `<h2>Please enter something to search</h2>`;
+    productGrid.innerHTML = `<h2 style = "font-size: 1.4em">Please enter something to search</h2>`;
     return;
   }
 
