@@ -52,11 +52,40 @@ form #submitBtn {
 }
 
 #cart {
+  border: 2px solid rgb(0, 0, 0);
   transform: scale(1.2);
   padding: 0.3rem;
+  width: 3.3em;
+  background-color: #111;
+  font-family: cursive;
+}
+/* filter */
+.filterContainer {
+  display: flex;
+  justify-content: center;   
+  align-items: center;       
+  gap: 12px;
+  margin: 20px 0;
+}
+.filterContainer p {
+  margin: 0;
+  font-weight: bold;
+}
+#categoryFilter,
+#priceFilter {
+  padding: 10px 12px;
+  margin: 10px 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s ease;
+  text-align: center;
 }
 
-/* ── Product grid ── */
+/* Product grid */
 #productGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -127,7 +156,7 @@ form #submitBtn {
   background-color: rgba(162, 111, 207, 0.691);
 }
 
-/* ── Cart overlay ── */
+/*Cart overlay*/
 #cartOverlay {
   position: fixed;
   inset: 0;
@@ -135,7 +164,11 @@ form #submitBtn {
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
-  display: none;  /*to hide cart*/
+  display: none; 
+
+}
+#cartOverlay.show{
+    display: flex;
 }
 
 #cartPopup {
@@ -151,7 +184,7 @@ form #submitBtn {
   
 }
 
-/* ── Cart header ── */
+/*Cart header*/
 .cartHeader {
   display: flex;
   justify-content: space-between;
@@ -305,7 +338,7 @@ form #submitBtn {
   opacity: 0.85;
 }
 
-/* ── Responsive ── */
+/*Responsive*/
 @media (max-width: 1024px) {
   #productGrid {
     grid-template-columns: repeat(3, 1fr);
@@ -375,5 +408,8 @@ form #submitBtn {
 
   .productCard img {
     height: 200px;
+  }
+  .filterContainer {
+    flex-direction: column;
   }
 }

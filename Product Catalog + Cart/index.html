@@ -23,12 +23,23 @@
             style="cursor: pointer"
           />
         </button>
+        <span id="cartCount"></span>
       </div>
     </nav>
+    <div class="filterContainer">
+      <p>Filter</p>
 
+      <select id="priceFilter">
+        <option value="all">All</option>
+        <option value="low">Under 1000</option>
+        <option value="mid">1000 - 5000</option>
+        <option value="high">5000+</option>
+      </select>
+    </div>
     <main>
       <div id="productGrid">
-        <div class="productCard">
+        <!-- ITEMS -->
+        <!-- <div class="productCard">
           <img src="assets/image.png" alt="Product Image" />
           <div class="cardContent">
             <p>Title</p>
@@ -37,22 +48,21 @@
             <p>Price :</p>
             <button>Add To Cart</button>
           </div>
-        </div>
+        </div> -->
       </div>
     </main>
 
-
-   <div id="cartOverlay">
-    <div id="cartPopup">
-        <!-- HEADER -->
+    <div id="cartOverlay" class="cartOverlay">
+      <div id="cartPopup">
+   
         <div class="cartHeader">
-            <h2>Cart</h2>
-            <button id="closeCart">✕</button>
+          <h2>Cart</h2>
+          <button id="closeCart">✕</button>
         </div>
-        <!-- BODY (items list) -->
+     
         <div id="cartItems">
-
-            <div class="cartItem">
+          <!-- Card ITem -->
+          <!-- <div class="cartItem">
                 <img src="assets/image.png" alt="Product">
 
                 <div class="cartInfo">
@@ -67,18 +77,13 @@
 
                     <button class="removeBtn">Remove</button>
                 </div>
-            </div>
-
+            </div> -->
         </div>
 
-        <!-- FOOTER (optional later) -->
         <div class="cartFooter">
-            <h3>Total: ₹50,000</h3>
-            <button class="checkoutBtn">Checkout</button>
+          <button class="checkoutBtn">Checkout</button>
         </div>
-
-    </div>
-
+      </div>
     </div>
 
     <script src="config.js"></script>
