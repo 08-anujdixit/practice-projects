@@ -36,5 +36,7 @@ DummyJSON API (or your API name)
 
 Screenshots :
 ![Search Image](assets/sc3.png)
+
 ![Search Image: For no item found ](assets/sc2.png)
+
 ![Cart Image](assets/sc1.png)
