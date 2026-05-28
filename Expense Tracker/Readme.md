@@ -1,4 +1,4 @@
-Expense Tracker App
+<mark>Expense Tracker App</mark>
 
 A simple and interactive Expense Tracker Web App built using JavaScript. This project helps users manage their daily expenses by adding, viewing, editing, and tracking spending in an organized way.
 
@@ -22,5 +22,5 @@ LocalStorage API
 <mark>SCREENSHOTS</mark>
 
 ![alt text](IMAGES/image.png)
-/*MOBILE LAYOUT*/
+<mark>MOBILE LAYOUT</mark>
 ![alt text](IMAGES/image-1.png)
