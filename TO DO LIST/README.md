@@ -9,8 +9,8 @@ This project helps users manage their daily tasks efficiently by adding, viewing
 
 -  Add new tasks
 -  Delete tasks
--  Mark tasks as completed (if implemented)
--  Save tasks using LocalStorage (if implemented)
+-  Mark tasks as completed 
+-  Save tasks using LocalStorage 
 -  Responsive design for mobile and desktop
 
 ---
