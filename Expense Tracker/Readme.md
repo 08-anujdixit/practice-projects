@@ -1,5 +1,5 @@
 # Expense Tracker App
-
+---
 A simple and interactive Expense Tracker Web App built using JavaScript. This project helps users manage their daily expenses by adding, viewing, editing, and tracking spending in an organized way.
 ---
 
