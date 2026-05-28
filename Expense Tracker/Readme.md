@@ -22,5 +22,5 @@ LocalStorage API
 <mark>SCREENSHOTS</mark>
 
 ![alt text](IMAGES/image.png)
-<mark>MOBILE LAYOUT</mark>
+<mark>MOBILE LAYOUT</mark>  \
 ![alt text](IMAGES/image-1.png)
