@@ -1,7 +1,6 @@
 import React from "react";
 import BlogCard from "./BlogCard";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 function Blogs() {
