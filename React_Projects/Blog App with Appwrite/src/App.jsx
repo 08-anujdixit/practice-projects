@@ -5,7 +5,6 @@ import {Header, Footer} from './components/index'
 
 
 export default function App() {
-
   return (
     <>
       <Header/>

@@ -6,10 +6,13 @@ import { useState, useEffect } from "react";
 function Blogs() {
   const [blogs, setBlogs] = useState([]);
 
+  baseURL = import.meta.env.VITE_NEWS_API_URL;
+  const apiKey = import.meta.env.VITE_NEWS_API_KEY;
+  apiURL = `${baseURL}/top-headlines?sources=techcrunch&apiKey=${apiKey}` 
+
   async function fetchData() {
     let res = await fetch(apiURL);
     let data = await res.json();
-    //  console.log(data.articles);
     setBlogs(data.articles);
   }
   useEffect(() => {
