@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Button } from "../index.js";
 
 function Header() {
   return (
@@ -49,8 +50,15 @@ function Header() {
                 </svg>
               </button>
             </div>
+
+            {/* Navbar pc buttons */}
+            {/* Logo */}
+            <div>
+              <h3 className="text-white italic">Logo</h3>
+            </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify">
               <div className="flex shrink-0 items-center"></div>
+
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   <NavLink
@@ -100,6 +108,10 @@ function Header() {
                     Contact Us
                   </NavLink>
                 </div>
+              </div>
+              <div className="hidden sm:flex ml-auto items-center gap-3">
+                <Button>Login</Button>
+                <Button>Sign Up</Button>
               </div>
             </div>
           </div>

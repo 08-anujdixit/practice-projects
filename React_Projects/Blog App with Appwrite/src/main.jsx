@@ -4,7 +4,7 @@ import './index.css'
 import App from './App';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
-import {Home, AboutUs, Blogs, BlogPage} from './components/Index.js';
+import {Home, AboutUs, Blogs, BlogPage} from './components/index.js';
 
 
 
