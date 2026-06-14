@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import {Header, Footer} from './components/index'
-import useDispatch from 'react-redux'
+import {useDispatch } from "react-redux";
 import authService from './appwrite/auth'
 import {login, logout} from './store/authSlice.js'
 
@@ -23,6 +23,7 @@ export default function App() {
 
   return (
     <>
+      
       <Header/>
       <Outlet/>
       <Footer />
