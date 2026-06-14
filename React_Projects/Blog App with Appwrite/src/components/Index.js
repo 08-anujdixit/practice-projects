@@ -11,6 +11,7 @@ import Input from './Input.jsx'
 import Protected from './AuthLayout.jsx'
 
 import RTE from './RTE.jsx'
+import Select from "./Select.jsx";
 
 export {
     Header,
@@ -24,5 +25,5 @@ export {
     Input,
     RTE,
     Protected,
-
+    Select,
 };
