@@ -1,11 +1,79 @@
-import React from "react";
-import useForm from "react-hook-form";
+import React, { useCallback, useEffect } from "react";
+import {useForm} from "react-hook-form";
 import { Button, Input, RTE, Select } from "../index.js";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Service from '../../appwrite/config.js'
 
-function PostForm() {
- 
+function PostForm({post}) {
+    
+    const navigate = useNavigate()
+    const userData = useSelector(state => state.auth.userData);
+    const{register, handleSubmit, watch, setValue, getValues, control} = useForm({
+        defaultValues : {
+            title: post?.title || "",
+            slug: post?.slug || "",
+            content: post?.content || "",
+            status: post?.status || "",
+
+        },
+    });
+
+    const submit = async function(data){
+        if(post){
+            const file = data.image[0] ? await Service.uploadFile(data.image[0]) : null;
+            if(file){
+                await Service.deleteFile(post.featuredImage);
+            }    
+
+            const dbPost = await Service.updatePost(post.$id, {
+                ...data,
+                featuredImage: file? file.$id : undefined,
+            });
+            if(dbPost){
+                navigate(`/post/${dbPost.$id}`);
+            }
+        }else{
+            const file = await Service.uploadFile(data.image[0]);
+            if(file){
+                const fileId = file.$id;
+                data.featuredImage = fileId;
+                const dbPost = await Service.createPost({
+                    userId: userData.$id,
+                    ...data,
+                });
+                if(dbPost){
+                    navigate(`/post/${dbPost.$id}`);
+                }
+            }
+        }
+    }
+
+    const slugTransform = useCallback((value)=>{
+        if(value && typeof value === "string")
+                  return value
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-zA-Z\d\s]+/g, "-")
+        .replace(/\s+/g, "-")
+
+        return "";
+    }, []);
+
+    useEffect(()=>{
+        const subscription = watch((value, {name})=>{
+            if(name === 'title'){
+                setValue("slug", slugTransform(value.title),{ shouldValidate :true});
+            }
+        }) 
+
+        return ()=>{
+            subscription.unsubscribe();
+        };
+    },[watch, slugTransform, setValue]);
+
     return(
-        <form>
+        <form onSubmit={handleSubmit(submit)}>
             <div>
                 <Input
                 label = "Title :"
@@ -36,13 +104,13 @@ function PostForm() {
                 label = "Featured Image :"
                 type ="file"
                 
-                accept = "image/png, image/jpg, image/jpeg/, image.gif"
+                accept = "image/png, image/jpg, image/jpeg, image.gif"
                 {...register("image", {required: !post})}
                 />
                 {post && (
                  <div>
                   <img 
-                  src={} 
+                  src={Service.getFileView(post.featuredImage)} 
                   alt={post.title} />  
                 </div>
                 )}

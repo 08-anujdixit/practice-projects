@@ -13,6 +13,9 @@ import Protected from './AuthLayout.jsx'
 import RTE from './RTE.jsx'
 import Select from "./Select.jsx";
 
+import PostForm from './postform/PostForm.jsx'
+import Container from "./Container.jsx";
+
 export {
     Header,
     Footer,
@@ -26,4 +29,8 @@ export {
     RTE,
     Protected,
     Select,
+    Container,
+    PostForm,
+    
+
 };

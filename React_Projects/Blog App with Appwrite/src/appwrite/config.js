@@ -3,7 +3,7 @@ import {Permission, Role} from 'appwrite';
 import {Client, ID, Databases, Storage, Query} from 'appwrite'; 
 
 
-export class Service{
+export default class Service{
     client =  new Client();
     databases;
     bucket;
