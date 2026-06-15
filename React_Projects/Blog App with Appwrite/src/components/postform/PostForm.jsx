@@ -42,8 +42,9 @@ function PostForm({ post }) {
         const fileId = file.$id;
         data.featuredImage = fileId;
         const dbPost = await Service.createPost({
-          userId: userData.$id,
           ...data,
+          userId: userData.$id,
+          userName: userData.name,
         });
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);

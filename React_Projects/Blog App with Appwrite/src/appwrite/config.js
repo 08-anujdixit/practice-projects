@@ -17,7 +17,7 @@ class Service{
         this.bucket = new Storage(this.client);    
     }
 
-    async createPost({title, content, slug, featuredImage, status, userId}){
+    async createPost({title, content, slug, featuredImage, status, userId, userName}){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -29,7 +29,8 @@ class Service{
                     content,
                     featuredImage,
                     status,
-                    userId
+                    userId,
+                    userName
                 },
             );
         } catch (error) {
@@ -83,7 +84,7 @@ class Service{
         }
     }
 
-    async getPosts(queries = [Query.equal('status', 'active')]){
+    async getPosts(queries = []){
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,

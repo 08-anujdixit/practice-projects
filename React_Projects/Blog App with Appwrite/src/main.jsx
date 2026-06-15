@@ -10,6 +10,7 @@ import store from './store/store.js'
 import LoginPage from './pages/LoginPage.jsx'
 import SignupPage from './pages/SignupPage.jsx';
 import AddBlog from './pages/AddBlog.jsx'
+import MyBlogs from './pages/MyBlogs.jsx';
 
 
 
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path='addblog' element={<AddBlog/>} />
       <Route path='/post/:postId' element={<Post/>} />
       <Route path='/edit-post/:postId' element={<EditPost/>} />
+      <Route path='/myblogs' element={<MyBlogs/>} />
   </Route>
   )
 )
