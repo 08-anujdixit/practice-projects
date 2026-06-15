@@ -77,7 +77,7 @@ function Header() {
                   >
                     Home
                   </NavLink>
-                  <NavLink
+                  {/* <NavLink
                     to="/blogs"
                     className={({ isActive }) =>
                       `
@@ -87,7 +87,7 @@ function Header() {
                     }
                   >
                     Blogs
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink
                     to="/about"
                     className={({ isActive }) =>
