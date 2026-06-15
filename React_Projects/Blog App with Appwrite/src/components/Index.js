@@ -3,8 +3,7 @@ import Footer from './Footer';
 import Home from "./Home";
 import AboutUs from "./AboutUs";
 import BlogCard from "./Blog/BlogCard";
-import BlogPage from "./Blog/BlogPage";
-import Blogs from "./Blog/Blogs";
+import NewsPage from "./Blog/NewsPage.jsx";
 
 import Button from './Button.jsx'
 import Input from './Input.jsx'
@@ -21,14 +20,14 @@ import Signup from './Signup/Signup.jsx'
 import Post from './Post.jsx'
 import EditPost from './EditPost.jsx'
 
+
 export {
     Header,
     Footer,
     Home,
     AboutUs,
     BlogCard,
-    BlogPage,
-    Blogs,
+    NewsPage,
     Button,
     Input,
     RTE,

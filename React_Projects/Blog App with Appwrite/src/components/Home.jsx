@@ -1,13 +1,15 @@
 import React from "react";
 import Hero from "./Hero";
-// import Blogs from "./Blog/Blogs";
+import { NewsPage } from "../components/index";
+import CommunityBlogs from "./Blog/CommunityBlogs";
 
 export default function Home(){
     return(
 
         <>
         <Hero/>
-        {/* <Blogs/> */}
+        <NewsPage/>
+        <CommunityBlogs />
         </>
     )
 }

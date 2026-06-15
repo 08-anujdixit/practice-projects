@@ -5,7 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
-import {Home, AboutUs, Blogs, BlogPage, Post, EditPost} from './components/index.js';
+import {Home, AboutUs, NewsPage, Post, EditPost} from './components/index.js';
 import store from './store/store.js'
 import LoginPage from './pages/LoginPage.jsx'
 import SignupPage from './pages/SignupPage.jsx';
@@ -19,7 +19,6 @@ const router = createBrowserRouter(
   <Route path='/' element = {<App/>}>
       <Route index element={<Home/>} />
       <Route path='about' element={<AboutUs/>} />
-      {/* <Route path='blogs' element={<BlogPage/>} /> */}
       <Route path='login' element={<LoginPage/>} />
       <Route path='signup' element={<SignupPage/>} />
       <Route path='addblog' element={<AddBlog/>} />
