@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "../index.js";
 import authService from "../../appwrite/auth.js";
-import LogoutBtn from '../Logout.jsx';
+import LogoutBtn from "../Logout.jsx";
 import { useSelector } from "react-redux";
 
 function Header() {
@@ -140,7 +140,20 @@ function Header() {
                     </NavLink>
                   </>
                 ) : (
-                  <LogoutBtn />
+                  <>
+                    <NavLink
+                      to="/addblog"
+                      className={({ isActive }) =>
+                        `
+                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
+                    ${isActive ? "bg-gray-900/50" : ""}
+                    `
+                      }
+                    >
+                      Add Blog
+                    </NavLink>
+                    <LogoutBtn />
+                  </>
                 )}
               </div>
             </div>

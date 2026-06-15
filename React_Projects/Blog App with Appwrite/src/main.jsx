@@ -9,7 +9,7 @@ import {Home, AboutUs, Blogs, BlogPage,} from './components/index.js';
 import store from './store/store.js'
 import LoginPage from './pages/LoginPage.jsx'
 import SignupPage from './pages/SignupPage.jsx';
-
+import AddBlog from './pages/AddBlog.jsx'
 
 
 
@@ -21,6 +21,7 @@ const router = createBrowserRouter(
       {/* <Route path='blogs' element={<BlogPage/>} /> */}
       <Route path='login' element={<LoginPage/>} />
       <Route path='signup' element={<SignupPage/>} />
+      <Route path='addblog' element={<AddBlog/>} />
   </Route>
   )
 )
