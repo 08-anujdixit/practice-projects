@@ -15,6 +15,9 @@ import Select from "./Select.jsx";
 
 import PostForm from './postform/PostForm.jsx'
 import Container from "./Container.jsx";
+import Login from './Login/Login.jsx'
+import Signup from './Signup/Signup.jsx'
+
 
 export {
     Header,
@@ -31,6 +34,7 @@ export {
     Select,
     Container,
     PostForm,
-    
+    Login,
+    Signup,
 
 };

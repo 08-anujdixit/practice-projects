@@ -1,8 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "../index.js";
+import authService from "../../appwrite/auth.js";
+import LogoutBtn from '../Logout.jsx';
+import { useSelector } from "react-redux";
 
 function Header() {
+  const authStatus = useSelector((state) => state.auth.status);
   return (
     <>
       <nav className="relative bg-indigo-700 dark:bg-black-800/50  dark:after:pointer-events-none dark:after:absolute dark:after:inset-x-0 dark:after:bottom-0 dark:after:h-px dark:after:bg-white/10">
@@ -110,8 +114,34 @@ function Header() {
                 </div>
               </div>
               <div className="hidden sm:flex ml-auto items-center gap-3">
-                <Button>Login</Button>
-                <Button>Sign Up</Button>
+                {!authStatus ? (
+                  <>
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) =>
+                        `
+                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
+                    ${isActive ? "bg-gray-900/50" : ""}
+                    `
+                      }
+                    >
+                      Login
+                    </NavLink>
+                    <NavLink
+                      to="/signup"
+                      className={({ isActive }) =>
+                        `
+                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
+                    ${isActive ? "bg-gray-900/50" : ""}
+                    `
+                      }
+                    >
+                      Sign Up
+                    </NavLink>
+                  </>
+                ) : (
+                  <LogoutBtn />
+                )}
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import authService from "../../appwrite/auth";
 import { Link, useNavigate } from "react-router-dom";
-import useDispatch from "react-redux";
+import { useDispatch } from "react-redux";
 import { Input, Button } from "../index.js";
 import { useForm } from "react-hook-form";
 import { login as authLogin } from "../../store/authSlice.js";
@@ -28,23 +28,23 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex items-center justify-center w-full my-20 ">
       <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
+        className={`mx-auto w-full max-w-lg h-110 bg-slate-900 rounded-xl p-10 border border-slate-800 text-white `}
       >
         <div className="mb-2 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
-            <Logo width="100%" />
+            {/* <Logo width="100%" /> */}
           </span>
         </div>
         <h2 className="text-center text-2xl font-bold leading-tight">
           Sign in to your account
         </h2>
-        <p className="mt-2 text-center text-base text-black/60">
+        <p className="mt-2 text-center text-base text-white">
           Don&apos;t have any account? &nbsp;
           <Link
             to="/signup"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
+            className="font-medium text-primary transition-all duration-200 hover:underline "
           >
             Sign Up
           </Link>
@@ -57,6 +57,7 @@ export default function Login() {
               label="Email: "
               placeholder="Enter your email"
               type="email"
+              className="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-lg text-balck placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
               {...register("email", {
                 required: true,
                 validate: {
@@ -70,11 +71,15 @@ export default function Login() {
               label="Password: "
               type="password"
               placeholder="Enter your password"
+              className="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-lg text-black placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
               {...register("password", {
                 required: true,
               })}
             />
-            <Button type="submit" className="w-full">
+            <Button
+              type="submit"
+              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-lg shadow-indigo-600/20 transition duration-200"
+            >
               Sign In
             </Button>
           </div>
