@@ -11,7 +11,7 @@ import LoginPage from './pages/LoginPage.jsx'
 import SignupPage from './pages/SignupPage.jsx';
 import AddBlog from './pages/AddBlog.jsx'
 import MyBlogs from './pages/MyBlogs.jsx';
-
+import NewsDetail from "./pages/NewsDetail";
 
 
 const router = createBrowserRouter(
@@ -25,6 +25,7 @@ const router = createBrowserRouter(
       <Route path='/post/:postId' element={<Post/>} />
       <Route path='/edit-post/:postId' element={<EditPost/>} />
       <Route path='/myblogs' element={<MyBlogs/>} />
+      <Route path='/news/:id' element={<NewsDetail/>} />
   </Route>
   )
 )

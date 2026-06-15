@@ -59,6 +59,8 @@ function CommunityBlogs() {
 
   return (
     <Container>
+      <div id="community-blogs">
+
       <div className="p-4">
          <h1 className="text-3xl md:text-4xl text-center text-white font-bold my-18 ">
           Community Blogs
@@ -79,6 +81,7 @@ function CommunityBlogs() {
             </div>
           </div>
         </section>
+      </div>
       </div>
     </Container>
   );

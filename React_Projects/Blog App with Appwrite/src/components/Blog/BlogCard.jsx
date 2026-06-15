@@ -50,7 +50,11 @@ function BlogCard({ post, onEdit, onDelete, currentUserId }) {
               >
                 Delete
               </button>
-              <div className="w-full mt-3">
+             
+            </div>
+          )}
+
+           <div className="w-full mt-3">
                 <div className="flex justify-end">
                   <Link
                     to={`/post/${post.$id}`}
@@ -60,8 +64,6 @@ function BlogCard({ post, onEdit, onDelete, currentUserId }) {
                   </Link>
                 </div>
               </div>
-            </div>
-          )}
         </div>
       </div>
     </Link>

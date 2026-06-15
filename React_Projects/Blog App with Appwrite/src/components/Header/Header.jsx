@@ -57,8 +57,12 @@ function Header() {
 
             {/* Navbar pc buttons */}
             {/* Logo */}
-            <div>
-              <h3 className="text-white italic">Logo</h3>
+            <div
+              className="w-10 h-10 flex items-center justify-center rounded-lg 
+                    bg-black text-white font-bold border border-gray-700 
+                    cursor-pointer select-none"
+            >
+              AD
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify">
               <div className="flex shrink-0 items-center"></div>
@@ -77,17 +81,6 @@ function Header() {
                   >
                     Home
                   </NavLink>
-                  {/* <NavLink
-                    to="/blogs"
-                    className={({ isActive }) =>
-                      `
-                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
-                    ${isActive ? "bg-gray-900/50" : ""}
-                    `
-                    }
-                  >
-                    Blogs
-                  </NavLink> */}
                   <NavLink
                     to="/about"
                     className={({ isActive }) =>
@@ -141,17 +134,17 @@ function Header() {
                   </>
                 ) : (
                   <>
-                           <NavLink
-                    to="/myblogs"
-                    className={({ isActive }) =>
-                      `
+                    <NavLink
+                      to="/myblogs"
+                      className={({ isActive }) =>
+                        `
                     rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
                     ${isActive ? "bg-gray-900/50" : ""}
                     `
-                    }
-                  >
-                    My Blogs
-                  </NavLink>
+                      }
+                    >
+                      My Blogs
+                    </NavLink>
                     <NavLink
                       to="/addblog"
                       className={({ isActive }) =>

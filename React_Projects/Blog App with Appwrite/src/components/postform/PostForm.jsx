@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import Service from "../../appwrite/config.js";
 
 function PostForm({ post }) {
-   
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
   const { register, handleSubmit, watch, setValue, getValues, control } =
@@ -18,7 +17,7 @@ function PostForm({ post }) {
         status: post?.status || "active",
       },
     });
-    const imageFile = watch("image");
+  const imageFile = watch("image");
 
   const submit = async function (data) {
     if (post) {
@@ -79,40 +78,37 @@ function PostForm({ post }) {
   const [preview, setPreview] = useState(null);
 
   useEffect(() => {
-  return () => {
-    if (preview) {
-      URL.revokeObjectURL(preview);
+    return () => {
+      if (preview) {
+        URL.revokeObjectURL(preview);
+      }
+    };
+  }, [preview]);
+
+  useEffect(() => {
+    if (imageFile && imageFile[0]) {
+      const imageUrl = URL.createObjectURL(imageFile[0]);
+
+      setPreview(imageUrl);
+
+      return () => URL.revokeObjectURL(imageUrl);
     }
-  };
-}, [preview]);
-
-useEffect(() => {
-  if (imageFile && imageFile[0]) {
-    const imageUrl = URL.createObjectURL(imageFile[0]);
-
-    setPreview(imageUrl);
-
-    return () => URL.revokeObjectURL(imageUrl);
-  }
-}, [imageFile]);
-
+  }, [imageFile]);
 
   return (
     <form
-  onSubmit={handleSubmit(submit)}
-  className="max-w-7xl mx-auto p-6 bg-white rounded-2xl shadow-lg"
->
-  <div className="grid md:grid-cols-3 gap-6">
-    
-    {/* Left Section */}
-    <div className="md:col-span-2 space-y-6">
-    <div className="border border-gray-500  rounded-lg p-5">
-
-      <Input
-        label="Title :"
-        placeholder="Enter Blog Title"
-        {...register("title", { required: true })}
-        className="
+      onSubmit={handleSubmit(submit)}
+      className="max-w-7xl mx-auto p-6 bg-white rounded-2xl shadow-lg my-8"
+    >
+      <div className="grid md:grid-cols-3 gap-6">
+        {/* Left Section */}
+        <div className="md:col-span-2 space-y-6">
+          <div className="border border-gray-500  rounded-lg p-5">
+            <Input
+              label="Title :"
+              placeholder="Enter Blog Title"
+              {...register("title", { required: true })}
+              className="
           w-full
           px-4 py-3
           border border-gray-400
@@ -121,18 +117,18 @@ useEffect(() => {
           focus:ring-2
           focus:ring-indigo-500
         "
-      />
+            />
 
-      <Input
-        label="Slug :"
-        placeholder="slug"
-        {...register("slug", { required: true })}
-        onInput={(e) => {
-          setValue("slug", slugTransform(e.currentTarget.value), {
-            shouldValidate: true,
-          });
-        }}
-        className="
+            <Input
+              label="Slug :"
+              placeholder="slug"
+              {...register("slug", { required: true })}
+              onInput={(e) => {
+                setValue("slug", slugTransform(e.currentTarget.value), {
+                  shouldValidate: true,
+                });
+              }}
+              className="
           w-full
           px-4 py-3
           border border-gray-400
@@ -142,43 +138,40 @@ useEffect(() => {
           focus:ring-2
           focus:ring-indigo-500
         "
-      />
-    </div>
-        <div className="border border-gray-500 rounded-lg">
-
-      <RTE
-        label="Blog Content"
-        name="content"
-        control={control}
-        defaultValue={getValues("content")}
-      />
+            />
+          </div>
+          <div className="border border-gray-500 rounded-lg">
+            <RTE
+              label="Blog Content"
+              name="content"
+              control={control}
+              defaultValue={getValues("content")}
+            />
+          </div>
         </div>
-    </div>
 
-    {/* Right Section */}
-    <div className="space-y-6">
-        <div className="">
-
-      <Input
-        label="Featured Image"
-        type="file"
-        accept="image/png, image/jpg, image/jpeg, image/gif"
-        {...register("image", { required: !post })}
-
-        className="
+        {/* Right Section */}
+        <div className="space-y-6">
+          <div className="">
+            <Input
+              label="Featured Image"
+              type="file"
+              accept="image/png, image/jpg, image/jpeg, image/gif"
+              {...register("image", { required: !post })}
+              className="
           w-full
           text-sm
           text-gray-700
           my-4
         "
-      />
+            />
 
-      {preview ? (
-        <div>
-          <img
-            src={preview}
-            alt="Preview"
-            className="
+            {preview ? (
+              <div>
+                <img
+                  src={preview}
+                  alt="Preview"
+                  className="
               w-full
               h-64
               object-cover
@@ -187,15 +180,15 @@ useEffect(() => {
               shadow
                my-2
             "
-          />
-        </div>
-      ) : (
-        post && (
-          <div>
-            <img
-              src={Service.getFileView(post.featuredImage)}
-              alt={post.title}
-              className="
+                />
+              </div>
+            ) : (
+              post && (
+                <div>
+                  <img
+                    src={Service.getFileView(post.featuredImage)}
+                    alt={post.title}
+                    className="
                 w-full
                 h-64
                 object-cover
@@ -204,16 +197,16 @@ useEffect(() => {
                 shadow
                
               "
-            />
-          </div>
-        )
-      )}
+                  />
+                </div>
+              )
+            )}
 
-      <Select
-        options={["active", "inactive"]}
-        label="Status"
-        {...register("status", { required: true })}
-        className="
+            <Select
+              options={["active", "inactive"]}
+              label="Status"
+              {...register("status", { required: true })}
+              className="
           w-full
           px-4
           py-3
@@ -226,12 +219,12 @@ useEffect(() => {
           my-4
           
         "
-      />
+            />
 
-      <Button
-        type="submit"
-        bgColor={post ? "bg-green-500" : undefined}
-        className="
+            <Button
+              type="submit"
+              bgColor={post ? "bg-green-500" : undefined}
+              className="
           w-full
           bg-indigo-600
           hover:bg-indigo-700
@@ -243,14 +236,13 @@ useEffect(() => {
           shadow-md
           my-5
         "
-      >
-        {post ? "Update Blog" : "Publish Blog"}
-      </Button>
+            >
+              {post ? "Update Blog" : "Publish Blog"}
+            </Button>
+          </div>
         </div>
-
-    </div>
-  </div>
-</form>
+      </div>
+    </form>
   );
 }
 export default PostForm;

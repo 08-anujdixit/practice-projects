@@ -1,52 +1,40 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function NewsCard({ title, description, image, source, date, url }) {
-  return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 flex flex-col">
+  const navigate = useNavigate();
 
-      {/* Image */}
+  const handleClick = () => {
+    navigate("/news/:id", {
+      state: { title, description, image, source, date, url },
+    });
+  };
+
+  return (
+    <div
+      onClick={handleClick}
+      className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:scale-[1.01] transition cursor-pointer"
+    >
       {image && (
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-52 object-cover"
-        />
+        <img src={image} className="w-full h-52 object-cover" />
       )}
 
-      {/* Content */}
-      <div className="p-4 flex flex-col flex-1">
-
-        {/* Source badge */}
+      <div className="p-4">
         <div className="text-xs text-blue-600 font-semibold mb-2">
-          {source || "News"}
+          {source}
         </div>
 
-        {/* Title */}
         <h2 className="font-bold text-lg line-clamp-2">
           {title}
         </h2>
 
-        {/* Description */}
-        <p className="text-gray-600 text-sm mt-2 line-clamp-3 flex-1">
+        <p className="text-gray-600 text-sm mt-2 line-clamp-3">
           {description}
         </p>
 
-        {/* Footer */}
-        <div className="flex justify-between items-center mt-4 text-xs text-gray-500">
-          <span>
-            {date ? new Date(date).toLocaleDateString() : ""}
-          </span>
-
-          <a
-            href={url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-500 font-medium hover:underline"
-          >
-            Read More →
-          </a>
+        <div className="flex justify-between mt-4 text-xs text-gray-500">
+          <span>{date ? new Date(date).toLocaleDateString() : ""}</span>
         </div>
-
       </div>
     </div>
   );

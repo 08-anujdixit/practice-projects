@@ -31,6 +31,9 @@ function Post() {
   return (
     <>
       <div className="max-w-4xl mx-auto py-8 text-white">
+      <button onClick={() => navigate(-1)} className="mb-4 text-white cursor-pointer hover:text-gray-300">
+        ← Back
+      </button>
         <img
           src={Service.getFileView(post.featuredImage)}
           alt={post.title}
