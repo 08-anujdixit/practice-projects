@@ -18,6 +18,8 @@ import Container from "./Container.jsx";
 import Login from './Login/Login.jsx'
 import Signup from './Signup/Signup.jsx'
 
+import Post from './Post.jsx'
+import EditPost from './EditPost.jsx'
 
 export {
     Header,
@@ -36,5 +38,6 @@ export {
     PostForm,
     Login,
     Signup,
-
+    Post,
+    EditPost,
 };

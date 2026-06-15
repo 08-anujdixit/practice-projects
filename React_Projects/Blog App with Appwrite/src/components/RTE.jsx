@@ -2,25 +2,33 @@ import React from "react";
 import { Controller } from "react-hook-form";
 import { Editor } from "@tinymce/tinymce-react";
 
-export default function RTE({ name, control, label, defualtValues = "" }) {
+export default function RTE({
+  name,
+  control,
+  label,
+  defaultValue = "",
+}) {
   return (
     <div className="w-full">
-      {label && <label className="inline-block mb-1 pl-1 ">{label}</label>}
+      {label && (
+        <label className="inline-block mb-1 pl-1">
+          {label}
+        </label>
+      )}
 
       <Controller
         name={name || "content"}
         control={control}
-        render={({ field: { onChange } }) => (
+        defaultValue={defaultValue}
+        render={({ field: { onChange, value } }) => (
           <Editor
             apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
-            initialValue={defualtValues}
+            value={value}
             init={{
-              initialValue: defualtValues,
               branding: false,
               height: 500,
               menubar: true,
               plugins: [
-                "image",
                 "advlist",
                 "autolink",
                 "lists",
@@ -36,18 +44,15 @@ export default function RTE({ name, control, label, defualtValues = "" }) {
                 "insertdatetime",
                 "media",
                 "table",
-                "code",
                 "help",
                 "wordcount",
-                "anchor",
               ],
               toolbar:
-                "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
+                "undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image | removeformat | help",
               content_style:
-                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px }",
             }}
             onEditorChange={onChange}
-            
           />
         )}
       />

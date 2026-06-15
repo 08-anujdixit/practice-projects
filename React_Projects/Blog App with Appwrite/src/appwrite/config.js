@@ -122,7 +122,7 @@ class Service{
         }
     }
 
-    getFileView(fileID){
+    getFileView(fileId){
         return this.bucket.getFileView(conf.appwriteBucketId, fileId);
     }
 
