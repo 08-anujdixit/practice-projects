@@ -119,3 +119,12 @@ This project was built to strengthen my understanding of full-stack web developm
 <p align="center">
   <img src="./Screenshots/Screenshot 2026-06-16 135642.png" width="45%">
 </p>
+
+<p align="center">
+  <img src="./Screenshots/Res1.png" width="45%">
+  <img src="./Screenshots/Res2.png" width="45%">
+</p>
+<p align="center">
+  <img src="./Screenshots/Res3.png" width="45%">
+  <img src="./Screenshots/image.png" width="45%">
+</p>
