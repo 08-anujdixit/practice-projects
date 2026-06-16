@@ -29,7 +29,7 @@ function BlogCard({ post, onEdit, onDelete, currentUserId }) {
         <img
           src={Service.getFileView(post.featuredImage)}
           alt={post.title}
-          className="w-full h-36 sm:h-48 object-cover"
+          className="w-full h-36 sm:h-48 object-cover "
         />
 
         {/* CONTENT */}
@@ -48,31 +48,6 @@ function BlogCard({ post, onEdit, onDelete, currentUserId }) {
           <p className="text-sm text-gray-600 mt-2 flex-1 line-clamp-3">
             {preview}
           </p>
-
-          {/* OWNER ACTIONS */}
-          {isOwner && (
-            <div className="flex gap-2 mt-4">
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  onEdit(post);
-                }}
-                className="px-3 py-1 text-xs bg-green-700 text-white rounded hover:bg-green-800"
-              >
-                Edit
-              </button>
-
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  onDelete(post.$id);
-                }}
-                className="px-3 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600"
-              >
-                Delete
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </Link>
