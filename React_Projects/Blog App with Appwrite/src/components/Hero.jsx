@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Hero() {
-  const userData = useSelector((state)=> state.auth.userData)
+  const authStatus = useSelector((state)=> state.auth.status)
   const navigate = useNavigate()
 
 
   function onClickHandler (){
-    if(userData){
+    if(authStatus){
       navigate('/addblog');
     }else{
       navigate('/login');
