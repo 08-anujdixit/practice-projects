@@ -20,7 +20,7 @@ function NewsDetail() {
       
       <button
         onClick={() => navigate(-1)}
-        className="mb-4 text-white"
+        className="mb-4 text-indigo-400 hover:text-indigo-300"
       >
         ← Back
       </button>
