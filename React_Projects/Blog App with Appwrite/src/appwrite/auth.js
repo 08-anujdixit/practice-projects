@@ -42,6 +42,7 @@ export class AuthService {
         "APPWRITE: CREATE ACCOUNT ERROR : AUTHSERVICE : ERROR :",
         error,
       );
+      throw error;
     }
   }
 

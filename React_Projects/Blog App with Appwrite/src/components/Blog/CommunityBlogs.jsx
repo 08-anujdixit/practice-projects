@@ -21,9 +21,7 @@ function CommunityBlogs() {
     try {
       setLoading(true);
 
-      const blogs = await Service.getPosts([
-        Query.orderDesc("$createdAt"),
-      ]);
+      const blogs = await Service.getPosts([Query.orderDesc("$createdAt")]);
 
       setPosts(blogs?.documents || []);
     } catch (error) {
@@ -56,32 +54,42 @@ function CommunityBlogs() {
       </div>
     );
   }
+  if (posts.length === 0) {
+    return(
+
+    <div className="flex flex-col items-center justify-center mt-20 text-gray-300">
+          <h1 className="text-3xl md:text-4xl text-center text-white font-bold my-18 ">
+            Community Blogs
+          </h1>
+      <p className="text-lg font-medium">No Blogs Found :( </p>
+    </div>
+    )
+  }
 
   return (
     <Container>
       <div id="community-blogs">
+        <div className="p-4">
+          <h1 className="text-3xl md:text-4xl text-center text-white font-bold my-18 ">
+            Community Blogs
+          </h1>
 
-      <div className="p-4">
-         <h1 className="text-3xl md:text-4xl text-center text-white font-bold my-18 ">
-          Community Blogs
-        </h1>
-
-        <section>
-          <div className="container mx-auto px-16 py-9">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {posts.map((post) => (
-                <BlogCard
-                  key={post.$id}
-                  post={post}
-                  currentUserId={userData?.$id}
-                  onEdit={handleEdit}
-                  onDelete={handleDelete}
-                />
-              ))}
+          <section>
+            <div className="container mx-auto px-16 py-9">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {posts.map((post) => (
+                  <BlogCard
+                    key={post.$id}
+                    post={post}
+                    currentUserId={userData?.$id}
+                    onEdit={handleEdit}
+                    onDelete={handleDelete}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
       </div>
     </Container>
   );
