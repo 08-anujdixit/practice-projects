@@ -108,8 +108,12 @@ This project was built to strengthen my understanding of full-stack web developm
 </p>
 
 <p align="center">
-  <img src="./Screenshots//blogdetail.png" width="45%">
-  <img src="./Screenshots//Newsdetail.png" width="45%">
+  <img src="./Screenshots/blogdetail.png" width="45%">
+  <img src="./Screenshots/Newsdetail.png" width="45%">
+</p>
+<p align="center">
+  <img src="./Screenshots/MyBlog.png" width="45%">
+  <img src="./Screenshots/Text editor.png" width="45%">
 </p>
 
 <p align="center">
