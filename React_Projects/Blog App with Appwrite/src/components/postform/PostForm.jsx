@@ -98,12 +98,12 @@ function PostForm({ post }) {
   return (
     <form
       onSubmit={handleSubmit(submit)}
-      className="max-w-7xl mx-auto p-6 bg-white rounded-2xl shadow-lg my-8"
+      className="max-w-7xl mx-auto p-3 sm:p-6 bg-white rounded-2xl shadow-lg my-4 sm:my-8"
     >
       <div className="grid md:grid-cols-3 gap-6">
         {/* Left Section */}
-        <div className="md:col-span-2 space-y-6">
-          <div className="border border-gray-500  rounded-lg p-5">
+        <div className="md:col-span-2 space-y-4 sm:space-y-6">
+          <div className="border border-gray-300 rounded-xl p-3 sm:p-5">
             <Input
               label="Title :"
               placeholder="Enter Blog Title"
@@ -151,7 +151,7 @@ function PostForm({ post }) {
         </div>
 
         {/* Right Section */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           <div className="">
             <Input
               label="Featured Image"

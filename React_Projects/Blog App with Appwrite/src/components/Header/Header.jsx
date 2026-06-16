@@ -1,213 +1,212 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Button } from "../index.js";
-import authService from "../../appwrite/auth.js";
+import React, { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import LogoutBtn from "../Logout.jsx";
 import { useSelector } from "react-redux";
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinkClass = ({ isActive }) =>
+    `block rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/10 hover:text-white ${
+      isActive ? "bg-gray-900/50" : ""
+    }`;
+
   return (
-    <>
-      <nav className="relative bg-indigo-700 dark:bg-black-800/50  dark:after:pointer-events-none dark:after:absolute dark:after:inset-x-0 dark:after:bottom-0 dark:after:h-px dark:after:bg-white/10">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="relative flex h-16 items-center justify-between">
-            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              {/* <!-- Mobile menu button--> */}
-              <button
-                type="button"
-                command="--toggle"
-                commandfor="mobile-menu"
-                className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500"
+    <nav className="bg-indigo-700 dark:bg-black/80">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative flex h-16 items-center justify-between">
+          {/* Left Section */}
+          <div className="flex items-center">
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="sm:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-200 hover:bg-white/10"
+            >
+              {menuOpen ? (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
+            </button>
+
+            {/* Logo */}
+            <Link
+              to="/"
+              className="absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0"
+            >
+              <div
+                className="
+                  w-10 h-10
+                  flex items-center justify-center
+                  rounded-lg
+                  bg-black
+                  text-white
+                  font-bold
+                  border border-gray-700
+                  cursor-pointer
+                  select-none
+                "
               >
-                <span className="absolute -inset-0.5"></span>
-                <span className="sr-only text-white">Open main menu</span>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  data-slot="icon"
-                  aria-hidden="true"
-                  className="size-6 in-aria-expanded:hidden"
-                >
-                  <path
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  data-slot="icon"
-                  aria-hidden="true"
-                  className="size-6 not-in-aria-expanded:hidden"
-                >
-                  <path
-                    d="M6 18 18 6M6 6l12 12"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                AD
+              </div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden sm:flex items-center gap-2 ml-6">
+              <NavLink to="/" className={navLinkClass}>
+                Home
+              </NavLink>
+
+              <NavLink to="/about" className={navLinkClass}>
+                About Us
+              </NavLink>
+
+              <button
+                onClick={() => {
+                  document
+                    .getElementById("footer-section")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/10 hover:text-white"
+              >
+                Contact Us
               </button>
             </div>
+          </div>
 
-            {/* Navbar pc buttons */}
-            {/* Logo */}
-            <div
-              className="w-10 h-10 flex items-center justify-center rounded-lg 
-                    bg-black text-white font-bold border border-gray-700 
-                    cursor-pointer select-none"
-            >
-              AD
-            </div>
-            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify">
-              <div className="flex shrink-0 items-center"></div>
+          {/* Desktop Right Side */}
+          <div className="hidden sm:flex items-center gap-3">
+            {!authStatus ? (
+              <>
+                <NavLink to="/login" className={navLinkClass}>
+                  Login
+                </NavLink>
 
-              <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4">
-                  <NavLink
-                    to="/"
-                    aria-current="page"
-                    className={({ isActive }) =>
-                      `
-                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
-                    ${isActive ? "bg-gray-900/50" : ""}
-                    `
-                    }
-                  >
-                    Home
-                  </NavLink>
-                  <NavLink
-                    to="/about"
-                    className={({ isActive }) =>
-                      `
-                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
-                    ${isActive ? "bg-gray-900/50" : ""}
-                    `
-                    }
-                  >
-                    About Us
-                  </NavLink>
-                  <NavLink
-                    className="
-                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
-                    "
-                    onClick={() => {
-                      document
-                        .getElementById("footer-section")
-                        ?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                  >
-                    Contact Us
-                  </NavLink>
-                </div>
-              </div>
-              <div className="hidden sm:flex ml-auto items-center gap-3">
-                {!authStatus ? (
-                  <>
-                    <NavLink
-                      to="/login"
-                      className={({ isActive }) =>
-                        `
-                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
-                    ${isActive ? "bg-gray-900/50" : ""}
-                    `
-                      }
-                    >
-                      Login
-                    </NavLink>
-                    <NavLink
-                      to="/signup"
-                      className={({ isActive }) =>
-                        `
-                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
-                    ${isActive ? "bg-gray-900/50" : ""}
-                    `
-                      }
-                    >
-                      Sign Up
-                    </NavLink>
-                  </>
-                ) : (
-                  <>
-                    <NavLink
-                      to="/myblogs"
-                      className={({ isActive }) =>
-                        `
-                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
-                    ${isActive ? "bg-gray-900/50" : ""}
-                    `
-                      }
-                    >
-                      My Blogs
-                    </NavLink>
-                    <NavLink
-                      to="/addblog"
-                      className={({ isActive }) =>
-                        `
-                    rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/5 hover:text-white
-                    ${isActive ? "bg-gray-900/50" : ""}
-                    `
-                      }
-                    >
-                      Add Blog
-                    </NavLink>
-                    <LogoutBtn />
-                  </>
-                )}
-              </div>
-            </div>
+                <NavLink to="/signup" className={navLinkClass}>
+                  Sign Up
+                </NavLink>
+              </>
+            ) : (
+              <>
+                <NavLink to="/myblogs" className={navLinkClass}>
+                  My Blogs
+                </NavLink>
+
+                <NavLink to="/addblog" className={navLinkClass}>
+                  Add Blog
+                </NavLink>
+                
+                < LogoutBtn/>
+              </>
+            )}
           </div>
         </div>
 
-        <el-disclosure id="mobile-menu" hidden className="block sm:hidden">
-          <div className="space-y-1 px-2 pt-2 pb-3">
-            <NavLink
-              to="/"
-              aria-current="page"
-              className={({ isActive }) => `
-                  block rounded-md px-3 py-2 text-base font-medium text-white
-                  ${isActive ? "bg-gray-900/50" : ""}
-              `}
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/blogs"
-              className={({ isActive }) => `
-                  block rounded-md  px-3 py-2 text-base font-medium text-white 
-                  ${isActive ? "bg-gray-900/50" : ""}
-              `}
-            >
-              Blogs
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) => `
-                  block rounded-md  px-3 py-2 text-base font-medium text-white 
-                  ${isActive ? "bg-gray-900/50" : ""}
-              `}
-            >
-              About Us
-            </NavLink>
-            <NavLink
-              onClick={() => {
-                document
-                  .getElementById("footer-section")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
-            >
-              Contact us
-            </NavLink>
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="sm:hidden border-t border-white/10 py-3">
+            <div className="flex flex-col space-y-1">
+              <NavLink
+                to="/"
+                className={navLinkClass}
+                onClick={() => setMenuOpen(false)}
+              >
+                Home
+              </NavLink>
+
+              {authStatus && (
+                <>
+                  <NavLink
+                    to="/myblogs"
+                    className={navLinkClass}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    My Blogs
+                  </NavLink>
+
+                  <NavLink
+                    to="/addblog"
+                    className={navLinkClass}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Add Blog
+                  </NavLink>
+                </>
+              )}
+
+              {!authStatus ? (
+                <>
+                  <NavLink
+                    to="/login"
+                    className={navLinkClass}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Login
+                  </NavLink>
+
+                  <NavLink
+                    to="/signup"
+                    className={navLinkClass}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Sign Up
+                  </NavLink>
+                </>
+              ) : (
+                <div className="px-0 py-0">
+                  <LogoutBtn />
+                </div>
+              )}
+
+              <NavLink
+                to="/about"
+                className={navLinkClass}
+                onClick={() => setMenuOpen(false)}
+              >
+                About Us
+              </NavLink>
+
+              <button
+                onClick={() => {
+                  document
+                    .getElementById("footer-section")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                  setMenuOpen(false);
+                }}
+                className="block w-full text-left rounded-md px-3 py-2 text-sm font-medium text-gray-100 hover:bg-white/10 hover:text-white"
+              >
+                Contact Us
+              </button>
+            </div>
           </div>
-        </el-disclosure>
-      </nav>
-    </>
+        )}
+      </div>
+    </nav>
   );
 }
 
