@@ -1,6 +1,20 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Hero() {
+  const userData = useSelector((state)=> state.auth.userData)
+  const navigate = useNavigate()
+
+
+  function onClickHandler (){
+    if(userData){
+      navigate('/addblog');
+    }else{
+      navigate('/login');
+    }
+  }
+
   return (
     <section className="relative flex items-center justify-center min-h-[85vh] px-6  text-white bg-gradient-to-b from-indigo-700 via-gray-950 to-black">
       {/* CONTENT */}
@@ -20,7 +34,7 @@ function Hero() {
         {/* BUTTONS */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            to="/addblog"
+            onClick={onClickHandler}
             className="px-6 py-3 bg-indigo-600 hover:bg-blue-700 rounded-lg font-medium transition"
           >
             Start Writing →
