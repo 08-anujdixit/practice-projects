@@ -1,6 +1,6 @@
-#Practice Projects Repository
+# Practice Projects Repository
 
-##A collection of my web development projects created while learning and improving my skills in JavaScript, React, and modern web technologies.
+## A collection of my web development projects created while learning and improving my skills in JavaScript, React, and modern web technologies.
 
 📌 What's Inside
 
