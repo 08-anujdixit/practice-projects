@@ -9,7 +9,7 @@ export default function App() {
 
   const[loading, setLoading] = useState(true);
   const dispatch = useDispatch();
-
+//for get current user
   useEffect(()=>{
     authService.getCurrentUser().then((userData) =>{
       if(userData){
@@ -23,7 +23,6 @@ export default function App() {
 
   return (
     <>
-      
       <Header/>
       <Outlet/>
       <Footer />
