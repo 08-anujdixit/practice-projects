@@ -1,0 +1,98 @@
+# React E-Commerce Store - Planned Features
+
+## Home Page
+
+* Hero Section
+* Product Categories Section
+* Products Listed Category-wise (Amazon-style)
+* Best Deals Section (Random Products)
+* Footer
+
+## Search
+
+* Search Bar in Navbar
+* Search Suggestions / Preview
+* Show Categories in Suggestions
+* Do NOT show products while typing
+* Search Results page when:
+
+  * User presses Enter
+  * User clicks a suggested category
+
+## Products
+
+* Product Cards
+* Product Image
+* Product Title
+* Product Price
+* Product Category
+* Add to Cart Button
+* Wishlist Button (Like/Heart)
+
+## Product Details Page
+
+* Product Information
+* Product Image
+* Price
+* Description
+* Category
+* Add to Cart
+* Add to Wishlist
+
+## Cart
+
+* Add Product
+* Remove Product
+* Increase Quantity
+* Decrease Quantity
+* Update Quantity
+* Cart Summary
+* Total Price Calculation
+
+## Wishlist
+
+* Add Product to Wishlist
+* Remove Product from Wishlist
+* View Saved Products
+
+## User Experience (UX)
+
+* Toast Notifications
+
+  * Added to Cart
+  * Removed from Cart
+  * Added to Wishlist
+  * Removed from Wishlist
+
+* Loading States
+
+* Skeleton Loaders
+
+* Empty Cart State
+
+* Empty Wishlist State
+
+* Hover Effects
+
+* Smooth Transitions
+
+* Responsive Design (Mobile, Tablet, Desktop)
+
+## State Management
+
+* Cart State
+* Wishlist State
+* Search State
+
+## API Integration
+
+* Fetch Products from API
+* Fetch Categories from API
+
+## Pages
+
+* Home
+* Product Details
+* Search Results
+* Cart
+* Wishlist
