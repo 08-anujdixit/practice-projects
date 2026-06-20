@@ -7,10 +7,11 @@ import {Hero, Categories, BestDeals} from './Components/index.js'
 
 const router = createBrowserRouter(createRoutesFromElements(
 <Route path='/' element = {<App/>}>
-  <Route path='/' element={<Hero/>}/>
-  <Route path='/' element={<Categories/>}/>
-  <Route path='/' element={<BestDeals/>}/>
-
+  <Route index  element={<>
+    <Hero/>
+    <Categories/>
+    <BestDeals/>
+    </>}/>
 </Route>  
 ))
 
