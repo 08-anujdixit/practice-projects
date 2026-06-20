@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Instagram, Twitter, Github } from "lucide-react";
+// import {Instagram, Twitter} from "lucide-react";
 
 function Footer() {
   return (
@@ -60,10 +60,10 @@ function Footer() {
           </p>
 
           <div className="flex gap-4">
-            <Facebook className="cursor-pointer hover:scale-110 transition" />
-            <Instagram className="cursor-pointer hover:scale-110 transition" />
-            <Twitter className="cursor-pointer hover:scale-110 transition" />
-            <Github className="cursor-pointer hover:scale-110 transition" />
+            {/* <Facebook className="cursor-pointer hover:scale-110 transition" /> */}
+            {/* <Instagram className="cursor-pointer hover:scale-110 transition" /> */}
+            {/* <Twitter className="cursor-pointer hover:scale-110 transition" /> */}
+            {/* <Github className="cursor-pointer hover:scale-110 transition" /> */}
           </div>
 
         </div>

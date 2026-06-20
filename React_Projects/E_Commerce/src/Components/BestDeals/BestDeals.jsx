@@ -1,4 +1,4 @@
-import BestDealCard from "../components/BestDealCard";
+import BestDealCard from "./BestDealCard";
 
 function BestDeals() {
 
