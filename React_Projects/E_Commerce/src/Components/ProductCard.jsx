@@ -20,7 +20,9 @@ function ProductCard({
   onButtonClick,
 }) {
   return (
-    <div className="group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+    <div 
+    // onClick={navigate}
+    className="group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
 
       {/* Image */}
       <div className="relative overflow-hidden">

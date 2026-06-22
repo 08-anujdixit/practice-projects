@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
 
 
 
 function CategoryCard({ name, image }) {
   return (
+    <Link to={`/products?category=${category}`}>
+    
     <div className="group cursor-pointer overflow-hidden rounded-xl shadow-md">
       <img
         src={image}
@@ -16,6 +19,7 @@ function CategoryCard({ name, image }) {
         </h3>
       </div>
     </div>
+    </Link>
   );
 }
 

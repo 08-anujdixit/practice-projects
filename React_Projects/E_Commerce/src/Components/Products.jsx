@@ -1,5 +1,6 @@
 import { Search, SlidersHorizontal } from "lucide-react";
 import ProductCard from "../Components/ProductCard";
+import { Link } from "react-router-dom";
 
 function Products() {
   const products = [
@@ -46,6 +47,8 @@ function Products() {
   ];
 
   return (
+    <Link to="/details">
+    
     <div className="max-w-7xl mx-auto px-6 py-10">
 
       {/* Header */}
@@ -176,6 +179,7 @@ function Products() {
 
       </div>
     </div>
+    </Link>
   );
 }
 
