@@ -3,6 +3,7 @@ import Hero from './Hero.jsx'
 import Categories from './Categories/Categories.jsx'
 import BestDeals from './BestDeals/BestDeals.jsx'
 import Footer from './Footer.jsx'
+import ProductDetail from './ProductDetails.jsx'
 
 export {
     Header,
@@ -10,4 +11,5 @@ export {
     Categories,
     BestDeals,
     Footer,
+    ProductDetail,
 };
