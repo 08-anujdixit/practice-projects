@@ -1,4 +1,4 @@
-import BestDealCard from "./BestDealCard";
+import ProductCard from "../ProductCard";
 
 function BestDeals() {
 
@@ -22,7 +22,7 @@ function BestDeals() {
       {/* Products Grid */}
       {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {deals.map((deal) => (
-          <BestDealCard key={deal.id} {...deal} />
+          <ProductCard key={deal.id} {...deal} showDiscount={true} />
         ))}
       </div> */}
     </section>
