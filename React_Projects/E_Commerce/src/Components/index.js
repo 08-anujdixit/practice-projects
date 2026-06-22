@@ -6,6 +6,7 @@ import Footer from './Footer.jsx'
 import ProductDetail from './ProductDetails.jsx'
 import Products from './Products.jsx'
 import Cart from './Cart.jsx'
+import Wishlist from './Wishlist.jsx'
 
 export {
     Header,
@@ -16,4 +17,5 @@ export {
     ProductDetail,
     Products,
     Cart,
+    Wishlist,
 };
