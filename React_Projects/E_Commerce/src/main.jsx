@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, Router, RouterProvider } from 'react-router-dom'
-import {Hero, Categories, BestDeals, ProductDetail} from './Components/index.js'
+import {Hero, Categories, BestDeals, ProductDetail, Products} from './Components/index.js'
 
 const router = createBrowserRouter(createRoutesFromElements(
 <Route path='/' element = {<App/>}>
@@ -11,7 +11,6 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Hero/>
     <Categories/>
     <BestDeals/>
-
     </>}/>
 </Route>  
 ))

@@ -4,6 +4,7 @@ import Categories from './Categories/Categories.jsx'
 import BestDeals from './BestDeals/BestDeals.jsx'
 import Footer from './Footer.jsx'
 import ProductDetail from './ProductDetails.jsx'
+import Products from './Products.jsx'
 
 export {
     Header,
@@ -12,4 +13,5 @@ export {
     BestDeals,
     Footer,
     ProductDetail,
+    Products,
 };
