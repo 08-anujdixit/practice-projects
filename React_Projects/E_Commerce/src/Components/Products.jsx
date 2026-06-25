@@ -47,7 +47,6 @@ function Products() {
 
     return matchesCategory && matchesPrice;
   });
-
   const sortedProducts = [...filteredProducts];
 
   if (sortBy === "rating") {
