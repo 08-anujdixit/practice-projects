@@ -1,4 +1,4 @@
-const BASE_URL = "https://dummyjson.com/products";
+const BASE_URL = "https://dummyjson.com/products?limit=200";
 
 export const getAllProducts = async () => {
   const response = await fetch(BASE_URL);
