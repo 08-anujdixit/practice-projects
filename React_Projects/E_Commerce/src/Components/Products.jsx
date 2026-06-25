@@ -10,6 +10,7 @@ function Products() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [maxPrice, setMaxPrice] = useState(1000);
+  const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -47,8 +48,22 @@ function Products() {
     return matchesCategory && matchesPrice;
   });
 
-  const displayedProducts = filteredProducts.slice(0, 25);
-  
+  const sortedProducts = [...filteredProducts];
+
+  if (sortBy === "rating") {
+    sortedProducts.sort((a, b) => b.rating - a.rating);
+  }
+
+  if (sortBy === "lowToHigh") {
+    sortedProducts.sort((a, b) => a.price - b.price);
+  }
+
+  if (sortBy === "highToLow") {
+    sortedProducts.sort((a, b) => b.price - a.price);
+  }
+
+  const displayedProducts = sortedProducts.slice(0, 25);
+
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -132,10 +147,13 @@ function Products() {
           <div>
             <h3 className="font-semibold mb-3">Rating</h3>
 
-            <select className="w-full border rounded-lg p-2">
-              <option>All Ratings</option>
-              <option>4★ & Above</option>
-              <option>3★ & Above</option>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="w-full border rounded-lg p-2"
+            >
+              <option value="">Default</option>
+              <option value="rating">Best Rated</option>
             </select>
           </div>
         </aside>
@@ -147,11 +165,14 @@ function Products() {
               Showing {filteredProducts.length} products
             </p>
 
-            <select className="border rounded-lg px-3 py-2">
-              <option>Newest</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-              <option>Best Rated</option>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="border rounded-lg px-3 py-2"
+            >
+              <option value="">Newest</option>
+              <option value="lowToHigh">Price: Low to High</option>
+              <option value="highToLow">Price: High to Low</option>
             </select>
           </div>
 
