@@ -1,5 +1,6 @@
 import { Heart, Star, ShoppingCart } from "lucide-react";
 
+
 function ProductCard({
   image,
   title,
@@ -19,7 +20,10 @@ function ProductCard({
   onWishlist,
   onButtonClick,
 }) {
+  
   return (
+    
+    
     <div 
     // onClick={navigate}
     className="group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
@@ -89,6 +93,7 @@ function ProductCard({
         )}
       </div>
     </div>
+
   );
 }
 

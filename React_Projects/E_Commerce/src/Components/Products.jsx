@@ -123,14 +123,20 @@ function Products() {
             </div>
 
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {products.map((products) => (
-                <ProductCard
-                  key={products.id}
-                  image = {products.thumbnail}
-                  {...products}
-                  showDiscount={true}
-                />
-              ))}
+              {products.map((product) => {
+
+
+                return (
+                  <Link key={product.id} to={`/products/${product.id}`}>
+                    <ProductCard
+                      image={product.thumbnail}
+                      title={product.title}
+                      price={product.price}
+                      rating={product.rating}
+                    />
+                  </Link>
+                );
+              })}
             </div>
           </section>
         </div>
