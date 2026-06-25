@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -22,9 +23,11 @@ function Hero() {
           </p>
 
           <div className="flex gap-4">
+            <Link to = "/products">
             <button className="bg-black text-white px-6 py-3 rounded-lg">
               Shop Now
             </button>
+            </Link>
 
             <button className="border px-6 py-3 rounded-lg">
               Browse Categories

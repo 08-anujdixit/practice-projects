@@ -65,14 +65,14 @@ function ProductCard({
         {/* Price */}
         <div className="flex items-center gap-2 mt-3">
           <span className="text-xl font-bold text-green-600">
-            ₹{dealPrice || price}
+            ${dealPrice || price}
           </span>
 
           {showOriginalPrice &&
             dealPrice &&
             price !== dealPrice && (
               <span className="text-gray-400 line-through">
-                ₹{price}
+                ${price}
               </span>
             )}
         </div>
