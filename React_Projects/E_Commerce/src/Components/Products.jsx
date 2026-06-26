@@ -1,6 +1,6 @@
 import { Search, SlidersHorizontal } from "lucide-react";
 import ProductCard from "../Components/ProductCard";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../Services/productsService";
 
@@ -12,6 +12,11 @@ function Products() {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [sortBy, setSortBy] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [searchParams] = useSearchParams();
+
+  const categoryFromUrl = searchParams.get("category") || "all";
+  const searchFromUrl = searchParams.get("search") || "";
 
   //to fetch products
   useEffect(() => {
@@ -40,6 +45,11 @@ function Products() {
 
     fetchCategories();
   }, []);
+
+  useEffect(() => {
+    setSelectedCategory(categoryFromUrl);
+    setSearchTerm(searchFromUrl);
+  }, [categoryFromUrl, searchFromUrl]);
 
   //to convert search filter to lower case
   const query = searchTerm.trim().toLowerCase();
