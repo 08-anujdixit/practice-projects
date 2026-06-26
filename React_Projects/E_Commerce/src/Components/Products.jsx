@@ -11,7 +11,9 @@ function Products() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [maxPrice, setMaxPrice] = useState(1000);
   const [sortBy, setSortBy] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
+  //to fetch products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -26,7 +28,7 @@ function Products() {
 
     fetchProducts();
   }, []);
-
+  //for categories display
   useEffect(() => {
     const fetchCategories = async () => {
       const response = await fetch("https://dummyjson.com/products/categories");
@@ -39,14 +41,26 @@ function Products() {
     fetchCategories();
   }, []);
 
+
+  //to convert search filter to lower case
+  const query = searchTerm.trim().toLowerCase();
+
+  //actual function for all type of search
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
       selectedCategory === "all" || product.category === selectedCategory;
 
     const matchesPrice = product.price <= maxPrice;
 
-    return matchesCategory && matchesPrice;
+    const matchesSearch =
+      (product.title ?? "").toLowerCase().includes(query) ||
+      (product.category ?? "").toLowerCase().includes(query) ||
+      (product.brand ?? "").toLowerCase().includes(query);
+
+    return matchesCategory && matchesPrice && matchesSearch;
   });
+
+
   const sortedProducts = [...filteredProducts];
 
   if (sortBy === "rating") {
@@ -63,6 +77,8 @@ function Products() {
 
   const displayedProducts = sortedProducts.slice(0, 25);
 
+
+  //to display loading state
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -87,6 +103,8 @@ function Products() {
           <input
             type="text"
             placeholder="Search products..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full border rounded-xl pl-10 pr-4 py-3 outline-none focus:ring-2 focus:ring-black"
           />
         </div>
