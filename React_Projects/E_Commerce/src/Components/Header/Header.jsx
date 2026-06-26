@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { Heart, ShoppingCart, User, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -7,11 +7,22 @@ function Header() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState([]);
+  const searchRef = useRef(null);
 
   const handleCategoryClick = (category) => {
     navigate(`/products?category=${category.slug}`);
 
     // Clear the search after navigation
+    setSearch("");
+  };
+
+  const handleSearch = () => {
+    const query = search.trim();
+
+    if (!query) return;
+
+    navigate(`/products?search=${encodeURIComponent(query)}`);
+
     setSearch("");
   };
 
@@ -35,6 +46,18 @@ function Header() {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setSearch("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <nav>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -42,7 +65,7 @@ function Header() {
           ShopHub
         </NavLink>
 
-        <div className="hidden md:block relative w-[400px]">
+        <div ref={searchRef} className="hidden md:block relative w-[400px]">
           <div className="flex items-center border rounded-lg overflow-hidden">
             <input
               type="text"
@@ -50,22 +73,38 @@ function Header() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full px-4 py-2 outline-none"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+                }
+              }}
             />
 
-            <button className="px-4">
+            <button className="px-4" onClick={handleSearch}>
               <Search size={20} />
             </button>
           </div>
 
           {filteredCategories.length > 0 && (
-            <div className="absolute top-full left-0 mt-2 w-full bg-white border rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+            <div className="absolute top-full left-0 mt-2 w-full bg-white border rounded-xl shadow-xl overflow-hidden z-50">
               {filteredCategories.map((category) => (
                 <button
                   key={category.slug}
                   onClick={() => handleCategoryClick(category)}
-                  className="w-full text-left px-4 py-3 hover:bg-gray-100 transition flex items-center gap-2"
+                  className="group w-full flex items-center justify-between px-4 py-3 text-left transition-all duration-200 hover:bg-indigo-50 hover:pl-6"
                 >
-                  <span>{category.name}</span>
+                  <div className="flex items-center gap-3">
+                    <div>
+                      <p className="font-medium group-hover:text-indigo-600">
+                        {category.name}
+                      </p>
+                      <p className="text-xs text-gray-500">Category</p>
+                    </div>
+                  </div>
+
+                  <span className="opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
+                    →
+                  </span>
                 </button>
               ))}
             </div>
