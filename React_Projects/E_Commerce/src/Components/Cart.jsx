@@ -1,26 +1,10 @@
 import { Trash2, ShoppingBag } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 function Cart() {
-  const cartItems = [
-    {
-      id: 1,
-      title: "Wireless Headphones",
-      image:
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
-      price: 1999,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      title: "Gaming Mouse",
-      image:
-        "https://images.unsplash.com/photo-1527814050087-3793815479db",
-      price: 999,
-      quantity: 2,
-    },
-  ];
+  const { cart } = useCart();
 
-  const subtotal = cartItems.reduce(
+  const subtotal = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
@@ -35,19 +19,19 @@ function Cart() {
         Shopping Cart
       </h1>
 
-      {cartItems.length > 0 ? (
+      {cart.length > 0 ? (
         <div className="grid lg:grid-cols-[1fr_350px] gap-8">
 
           {/* Cart Items */}
           <div className="space-y-5">
 
-            {cartItems.map((item) => (
+            {cart.map((item) => (
               <div
                 key={item.id}
                 className="bg-white rounded-2xl shadow-md p-4 flex flex-col md:flex-row gap-5"
               >
                 <img
-                  src={item.image}
+                  src={item.thumbnail}
                   alt={item.title}
                   className="w-full md:w-36 h-36 object-cover rounded-xl"
                 />

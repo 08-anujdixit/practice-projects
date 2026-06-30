@@ -1,7 +1,8 @@
 import { Heart, Star, ShoppingCart } from "lucide-react";
-
+import { useCart } from "../context/CartContext";
 
 function ProductCard({
+  product,
   image,
   title,
   price,
@@ -20,14 +21,29 @@ function ProductCard({
   onWishlist,
   onButtonClick,
 }) {
-  
-  return (
-    
-    
-    <div 
-    // onClick={navigate}
-    className="group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+  const { dispatch } = useCart();
 
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        id: product.id,
+        title: product.title,
+        thumbnail: product.thumbnail,
+        price: product.price,
+        rating: product.rating,
+      },
+    });
+  };
+
+  return (
+    <div
+      // onClick={navigate}
+      className="group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+    >
       {/* Image */}
       <div className="relative overflow-hidden">
         <img
@@ -54,16 +70,12 @@ function ProductCard({
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-semibold text-lg line-clamp-1">
-          {title}
-        </h3>
+        <h3 className="font-semibold text-lg line-clamp-1">{title}</h3>
 
         {/* Rating */}
         <div className="flex items-center gap-1 mt-2">
           <Star size={16} fill="currentColor" />
-          <span className="text-sm text-gray-600">
-            {rating}
-          </span>
+          <span className="text-sm text-gray-600">{rating}</span>
         </div>
 
         {/* Price */}
@@ -72,19 +84,15 @@ function ProductCard({
             ${dealPrice || price}
           </span>
 
-          {showOriginalPrice &&
-            dealPrice &&
-            price !== dealPrice && (
-              <span className="text-gray-400 line-through">
-                ${price}
-              </span>
-            )}
+          {showOriginalPrice && dealPrice && price !== dealPrice && (
+            <span className="text-gray-400 line-through">${price}</span>
+          )}
         </div>
 
         {/* Action Button */}
         {showCartButton && (
           <button
-            onClick={onButtonClick}
+            onClick={handleAddToCart}
             className="w-full mt-4 flex items-center justify-center gap-2 bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
           >
             <ShoppingCart size={18} />
@@ -93,7 +101,6 @@ function ProductCard({
         )}
       </div>
     </div>
-
   );
 }
 

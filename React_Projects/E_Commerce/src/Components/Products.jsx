@@ -206,6 +206,7 @@ function Products() {
                 displayedProducts.map((product) => (
                   <Link key={product.id} to={`/products/${product.id}`}>
                     <ProductCard
+                      product={product}
                       image={product.thumbnail}
                       title={product.title}
                       price={product.price}
