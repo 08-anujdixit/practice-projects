@@ -29,16 +29,23 @@ function Hero() {
             </button>
             </Link>
 
-            <button className="border px-6 py-3 rounded-lg">
-              Browse Categories
-            </button>
+    <button
+  onClick={() => {
+    document.getElementById("categories")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }}
+  className="..."
+>
+  Browse Categories
+</button>
           </div>
         </div>
 
         {/* Right Image */}
         <div>
           <img
-            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+            src="https://plus.unsplash.com/premium_vector-1683121609098-3a7345febc0b?q=80&w=1058&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Featured Product"
             className="rounded-2xl shadow-lg"
           />

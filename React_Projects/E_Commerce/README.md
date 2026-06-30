@@ -1,16 +1,135 @@
-# React + Vite
+# 🛍️ React E-Commerce Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive e-commerce frontend built with **React**, featuring dynamic product browsing, filtering, cart management, wishlist functionality, and a clean shopping experience.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## 📸 Screenshots
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🏠 Home Page
 
-## Expanding the ESLint configuration
+![Home](./screenshots//home.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+### 🛍️ Products
+
+![Products](./screenshots//products.png)
+
+---
+
+### 📦 Product Details
+
+![Product Details](./screenshots//details.png)
+
+---
+
+### 🛒 Shopping Cart
+
+![Cart](./screenshots/cart.png
+
+---
+
+### ❤️ Wishlist
+
+![Wishlist](./screenshots/wishlist.png
+
+---
+
+## ✨ Features
+
+### 🏠 Home Page
+- Hero section
+- Shop by Categories
+- Best Deals section
+- Featured Products
+- Smooth scroll navigation
+
+### 🛒 Products
+- Browse all products
+- Search products
+- Category filtering
+- Price range filter
+- Sort by:
+  - Best Rated
+  - Price: Low → High
+  - Price: High → Low
+- Dynamic URL search parameters
+
+### 📦 Product Details
+- Product information
+- Discount display
+- Quantity selector
+- Add to Cart
+- Save to Wishlist
+
+### ❤️ Wishlist
+- Save products
+- Remove products
+- Move to Cart
+- Clear Wishlist
+- Wishlist badge in header
+
+### 🛍️ Shopping Cart
+- Add products
+- Remove products
+- Increase/Decrease quantity
+- Quantity selection from Product Details
+- Cart badge in header
+
+### 💡 User Experience
+- Responsive design
+- Loading states
+- Empty states
+- Toast notifications
+- LocalStorage persistence
+- Smooth scrolling
+
+---
+
+## 🛠️ Tech Stack
+
+- React
+- React Router DOM
+- Context API
+- useReducer
+- Tailwind CSS
+- DummyJSON API
+- Lucide React Icons
+- React Hot Toast
+
+---
+
+## 📖 What I Learned
+
+During this project I practiced:
+
+- Building reusable React components
+- State management using Context API
+- Managing complex state with useReducer
+- Client-side routing with React Router
+- API integration
+- Search, filtering and sorting
+- LocalStorage persistence
+- Responsive UI design
+- Component composition and project structure
+
+---
+
+## 📌 Future Improvements
+
+- User Authentication
+- Checkout Flow
+- Payment Integration
+- Order History
+- Product Reviews
+- Dark Mode
+
+---
+
+## 👨‍💻 Author
+
+**Anuj Dixit**
+---
+
+⭐ If you like this project, consider giving it a star!

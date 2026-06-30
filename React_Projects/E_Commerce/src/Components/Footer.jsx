@@ -56,7 +56,7 @@ function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
 
           <p className="text-gray-500 text-sm">
-            © 2026 ShopEase. All rights reserved.
+            © 2026 ShopHub. All rights reserved.
           </p>
 
           <div className="flex gap-4">
