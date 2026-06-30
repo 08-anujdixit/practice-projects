@@ -2,12 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { Heart, ShoppingCart, User, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 function Header() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState([]);
   const searchRef = useRef(null);
+  const { cart } = useCart();
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   const handleCategoryClick = (category) => {
     navigate(`/products?category=${category.slug}`);
@@ -118,8 +122,14 @@ function Header() {
             </div>
           </NavLink>
 
-          <NavLink to="/cart">
+          <NavLink to="/cart" className="relative">
             <ShoppingCart className="hover:scale-110 transition" />
+
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                {totalItems > 10 ? "10+" : totalItems}
+              </span>
+            )}
           </NavLink>
 
           <NavLink to="/login">
