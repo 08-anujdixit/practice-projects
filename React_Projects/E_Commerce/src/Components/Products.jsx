@@ -85,11 +85,6 @@ function Products() {
 
   const displayedProducts = sortedProducts.slice(0, 25);
 
-  //to display loading state
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
-
   return (
     <>
       <div className="max-w-7xl mx-auto px-6 py-10">
@@ -186,8 +181,14 @@ function Products() {
           {/* Product Grid */}
           <section>
             <div className="flex items-center justify-between mb-6">
-              <p className="text-gray-600">
-                Showing {filteredProducts.length} products
+              <p className="flex items-center gap-2 text-gray-600 text-lg">
+                {loading ? (
+                  <>
+                  <div>.  .  .</div>
+                  </>
+                ) : (
+                  <>Showing {filteredProducts.length} products</>
+                )}
               </p>
 
               <select
@@ -201,9 +202,16 @@ function Products() {
               </select>
             </div>
 
-            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {displayedProducts.length > 0 ? (
-                displayedProducts.map((product) => (
+            {loading ? (
+              <div className="flex items-center justify-center py-20">
+                <div className="flex items-center gap-3 text-gray-600">
+                  <span className="w-5 h-5 border-2 border-gray-300 border-t-black rounded-full animate-spin"></span>
+                  <span className="text-lg">Loading products...</span>
+                </div>
+              </div>
+            ) : displayedProducts.length > 0 ? (
+              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                {displayedProducts.map((product) => (
                   <Link key={product.id} to={`/products/${product.id}`}>
                     <ProductCard
                       product={product}
@@ -213,32 +221,31 @@ function Products() {
                       rating={product.rating}
                     />
                   </Link>
-                ))
-              ) : (
-                <div className="col-span-full flex flex-col items-center justify-center py-16">
-                  <h2 className="text-2xl font-bold text-gray-700">
-                    No Products Found :(
-                  </h2>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center py-16">
+                <h2 className="text-2xl font-bold text-gray-700">
+                  No Products Found :(
+                </h2>
 
-                  <p className="text-gray-500 mt-2 text-center max-w-md">
-                    We couldn't find any products matching your search or
-                    filters.
-                  </p>
+                <p className="text-gray-500 mt-2 text-center max-w-md">
+                  We couldn't find any products matching your search or filters.
+                </p>
 
-                  <button
-                    onClick={() => {
-                      setSearchTerm("");
-                      setSelectedCategory("all");
-                      setMaxPrice(1000);
-                      setSortBy("");
-                    }}
-                    className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition"
-                  >
-                    Clear Filters
-                  </button>
-                </div>
-              )}
-            </div>
+                <button
+                  onClick={() => {
+                    setSearchTerm("");
+                    setSelectedCategory("all");
+                    setMaxPrice(1000);
+                    setSortBy("");
+                  }}
+                  className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition"
+                >
+                  Clear Filters
+                </button>
+              </div>
+            )}
           </section>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Heart, ShoppingCart, User, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 function Header() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function Header() {
   const [categories, setCategories] = useState([]);
   const searchRef = useRef(null);
   const { cart } = useCart();
+  const { wishlist } = useWishlist();
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -117,8 +119,21 @@ function Header() {
         <div className="flex items-center gap-6">
           <NavLink to="/wishlist">
             <div className="flex items-center gap-2">
-              <span className="text-xl ">Saved</span>
-              <Heart className="hover:scale-110 transition" />
+              <span className="text-xl">Saved</span>
+
+              <div className="relative">
+                <Heart className="hover:scale-110 transition" />
+
+                {wishlist.length > 0 && (
+                  <span
+                    className="absolute -top-2 -right-2 flex items-center justify-center
+                     min-w-5 h-5 px-1 rounded-full bg-red-500
+                     text-white text-[10px] font-bold"
+                  >
+                    {wishlist.length}
+                  </span>
+                )}
+              </div>
             </div>
           </NavLink>
 
