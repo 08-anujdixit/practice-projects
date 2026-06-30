@@ -1,5 +1,6 @@
 import { Heart, Star, ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 import toast from "react-hot-toast";
 
 function ProductCard({
@@ -23,12 +24,43 @@ function ProductCard({
   onButtonClick,
 }) {
   const { cart, dispatch } = useCart();
+  const { wishlist, dispatch: wishlistDispatch } = useWishlist();
+  const isWishlisted = wishlist.some((item) => item.id === product.id);
+
+  const handleWishlist = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (isWishlisted) {
+      wishlistDispatch({
+        type: "REMOVE_FROM_WISHLIST",
+        payload: product.id,
+      });
+
+      toast("Removed from wishlist", {
+        icon: "💔",
+      });
+    } else {
+      wishlistDispatch({
+        type: "ADD_TO_WISHLIST",
+        payload: {
+          id: product.id,
+          title: product.title,
+          image: product.thumbnail,
+          price: product.price,
+          rating: product.rating,
+        },
+      });
+
+      toast.success("Added to wishlist");
+    }
+  };
 
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-      const alreadyInCart = cart.some((item) => item.id === product.id);
+    const alreadyInCart = cart.some((item) => item.id === product.id);
 
     dispatch({
       type: "ADD_TO_CART",
@@ -71,7 +103,7 @@ function ProductCard({
 
         {showWishlist && (
           <button
-            onClick={onWishlist}
+            onClick={handleWishlist}
             className="absolute top-3 right-3 bg-white p-2 rounded-full shadow hover:scale-110 transition"
           >
             <Heart size={18} />

@@ -20,6 +20,8 @@ import {
 } from "./Components/index.js";
 import { CartProvider } from "./context/CartContext.jsx";
 import { Toaster } from "react-hot-toast";
+import { WishlistProvider } from "./context/WishlistContext";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,6 +47,8 @@ const router = createBrowserRouter(
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <CartProvider>
+      <WishlistProvider>
+
       <RouterProvider router={router} />
       <Toaster
         position="top-right"
@@ -65,6 +69,7 @@ createRoot(document.getElementById("root")).render(
           },
         }}
       />
+      </WishlistProvider>
     </CartProvider>
   </StrictMode>,
 );
