@@ -26,13 +26,13 @@ A modern and responsive e-commerce frontend built with **React**, featuring dyna
 
 ### 🛒 Shopping Cart
 
-![Cart](./screenshots/cart.png
+![Cart](./screenshots//cart.png)
 
 ---
 
 ### ❤️ Wishlist
 
-![Wishlist](./screenshots/wishlist.png
+![Wishlist](./screenshots//wishlist.png)
 
 ---
 
