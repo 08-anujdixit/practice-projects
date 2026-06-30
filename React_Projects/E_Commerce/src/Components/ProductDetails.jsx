@@ -2,28 +2,104 @@ import { Heart, ShoppingCart, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../Services/productsService";
+import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
+import toast from "react-hot-toast";
 
 function ProductDetail() {
   const { id } = useParams();
 
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);
+
+  const { cart, dispatch } = useCart();
+  const { wishlist, dispatch: wishlistDispatch } = useWishlist();
+
+  const isWishlisted = wishlist.some((item) => item.id === product?.id);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const data = await getProductById(id);
-
         setProduct(data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProduct();
   }, [id]);
 
+  const handleWishlist = () => {
+    if (isWishlisted) {
+      wishlistDispatch({
+        type: "REMOVE_FROM_WISHLIST",
+        payload: product.id,
+      });
+
+      toast("Removed From Saved Items", {
+        icon: "💔",
+      });
+    } else {
+      wishlistDispatch({
+        type: "ADD_TO_WISHLIST",
+        payload: {
+          id: product.id,
+          title: product.title,
+          image: product.thumbnail,
+          price: product.price,
+          rating: product.rating,
+        },
+      });
+
+      toast.success("Added To Saved Items");
+    }
+  };
+
+  const handleAddToCart = () => {
+    const alreadyInCart = cart.some((item) => item.id === product.id);
+
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        id: product.id,
+        title: product.title,
+        thumbnail: product.thumbnail,
+        price: product.price,
+        rating: product.rating,
+        quantity,
+      },
+    });
+
+    if (alreadyInCart) {
+      toast("Cart Updated", {
+        icon: "🛒",
+      });
+    } else {
+      toast.success("Added to Cart!");
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-20 flex justify-center">
+        <div className="flex items-center gap-3 text-gray-600">
+          <span className="w-6 h-6 border-2 border-gray-300 border-t-black rounded-full animate-spin"></span>
+          <span className="text-lg font-medium">Loading product...</span>
+        </div>
+      </div>
+    );
+  }
+
   if (!product) {
-    return <h2>Loading...</h2>;
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+        <h2 className="text-2xl font-semibold">Product not found.</h2>
+      </div>
+    );
   }
   const dealPrice = (
     product.price -
@@ -78,23 +154,48 @@ function ProductDetail() {
             <h3 className="font-semibold mb-3">Quantity</h3>
 
             <div className="flex items-center w-fit border rounded-lg overflow-hidden">
-              <button className="px-4 py-2 hover:bg-gray-100">-</button>
+              <button
+                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                className="px-4 py-2 hover:bg-gray-100 transition"
+              >
+                -
+              </button>
 
-              <span className="px-6 py-2 border-x">1</span>
+              <span className="px-6 py-2 border-x font-semibold">
+                {quantity}
+              </span>
 
-              <button className="px-4 py-2 hover:bg-gray-100">+</button>
+              <button
+                onClick={() => setQuantity((prev) => prev + 1)}
+                className="px-4 py-2 hover:bg-gray-100 transition"
+              >
+                +
+              </button>
             </div>
           </div>
 
           {/* Buttons */}
           <div className="flex gap-4 mt-8">
-            <button className="flex-1 bg-black text-white py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-800 transition">
+            <button
+              onClick={handleAddToCart}
+              className="flex-1 bg-black text-white py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-800 transition"
+            >
               <ShoppingCart size={20} />
               Add to Cart
             </button>
 
-            <button className="border border-gray-300 p-3 rounded-xl hover:bg-gray-100 transition">
-              <Heart size={22} />
+            <button
+              onClick={handleWishlist}
+              className="border border-gray-300 p-3 rounded-xl hover:bg-gray-100 transition"
+            >
+              <Heart
+                size={22}
+                className={`transition-colors duration-200 ${
+                  isWishlisted
+                    ? "fill-red-500 text-red-500"
+                    : "text-gray-700 hover:text-red-500"
+                }`}
+              />
             </button>
           </div>
 
