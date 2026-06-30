@@ -37,7 +37,7 @@ function ProductCard({
         payload: product.id,
       });
 
-      toast("Removed from wishlist", {
+      toast("Removed From Saved Items", {
         icon: "💔",
       });
     } else {
@@ -52,7 +52,7 @@ function ProductCard({
         },
       });
 
-      toast.success("Added to wishlist");
+      toast.success("Added To Saved Items");
     }
   };
 
@@ -104,9 +104,16 @@ function ProductCard({
         {showWishlist && (
           <button
             onClick={handleWishlist}
-            className="absolute top-3 right-3 bg-white p-2 rounded-full shadow hover:scale-110 transition"
+            className="absolute top-3 right-3 bg-white p-2 rounded-full shadow hover:scale-110 active:scale-95 transition"
           >
-            <Heart size={18} />
+            <Heart
+              size={18}
+              className={`transition-colors duration-200 ${
+                isWishlisted
+                  ? "fill-red-500 text-red-500"
+                  : "text-gray-700 hover:text-red-500"
+              }`}
+            />
           </button>
         )}
       </div>
@@ -135,7 +142,7 @@ function ProductCard({
         {/* Action Button */}
         {showCartButton && (
           <button
-            onClick={handleAddToCart}
+            onClick={onButtonClick || handleAddToCart}
             className="w-full mt-4 flex items-center justify-center gap-2 bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
           >
             <ShoppingCart size={18} />

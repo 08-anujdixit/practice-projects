@@ -1,5 +1,6 @@
 import { Trash2, ShoppingBag } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const { cart, dispatch } = useCart();
@@ -122,10 +123,12 @@ function Cart() {
           <h2 className="text-2xl font-semibold mt-5">Your cart is empty</h2>
 
           <p className="text-gray-500 mt-2">Add products to start shopping.</p>
-
+          <Link to="/products">
+          
           <button className="mt-6 bg-black text-white px-6 py-3 rounded-xl">
             Continue Shopping
           </button>
+          </Link>
         </div>
       )}
     </div>
