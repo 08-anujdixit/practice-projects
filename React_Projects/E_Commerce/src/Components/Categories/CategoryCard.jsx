@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 
 
-function CategoryCard({ name, image }) {
+function CategoryCard({ name, image, slug }) {
   return (
-    <Link to={`/products?category=${category}`}>
+    <Link to={`/products?category=${slug}`}>
     
     <div className="group cursor-pointer overflow-hidden rounded-xl shadow-md">
       <img
