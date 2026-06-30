@@ -1,5 +1,6 @@
 import { Heart, Star, ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import toast from "react-hot-toast";
 
 function ProductCard({
   product,
@@ -21,11 +22,13 @@ function ProductCard({
   onWishlist,
   onButtonClick,
 }) {
-  const { dispatch } = useCart();
+  const { cart, dispatch } = useCart();
 
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
+
+      const alreadyInCart = cart.some((item) => item.id === product.id);
 
     dispatch({
       type: "ADD_TO_CART",
@@ -37,6 +40,14 @@ function ProductCard({
         rating: product.rating,
       },
     });
+
+    if (alreadyInCart) {
+      toast("Cart Updated", {
+        icon: "🛒",
+      });
+    } else {
+      toast.success(`Added to cart!`);
+    }
   };
 
   return (
