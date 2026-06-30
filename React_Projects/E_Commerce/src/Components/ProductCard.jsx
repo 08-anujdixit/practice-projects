@@ -8,10 +8,9 @@ function ProductCard({
   image,
   title,
   price,
-  dealPrice,
   rating,
 
-  discount,
+  discountPercentage,
 
   showDiscount = false,
   showWishlist = true,
@@ -26,6 +25,11 @@ function ProductCard({
   const { cart, dispatch } = useCart();
   const { wishlist, dispatch: wishlistDispatch } = useWishlist();
   const isWishlisted = wishlist.some((item) => item.id === product.id);
+
+  const originalPrice =
+    discountPercentage && showDiscount
+      ? Math.round(price / (1 - discountPercentage / 100))
+      : price;
 
   const handleWishlist = (e) => {
     e.preventDefault();
@@ -94,10 +98,9 @@ function ProductCard({
           alt={title}
           className="h-56 w-full object-cover group-hover:scale-105 transition duration-300"
         />
-
-        {showDiscount && discount && (
+        {showDiscount && discountPercentage && (
           <span className="absolute top-3 left-3 bg-red-500 text-white text-sm font-semibold px-3 py-1 rounded-full">
-            -{discount}%
+            -{Math.round(discountPercentage)}%
           </span>
         )}
 
@@ -129,15 +132,17 @@ function ProductCard({
         </div>
 
         {/* Price */}
-        <div className="flex items-center gap-2 mt-3">
-          <span className="text-xl font-bold text-green-600">
-            ${dealPrice || price}
-          </span>
+<div className="flex items-center gap-2 mt-3">
+  <span className="text-xl font-bold text-green-600">
+    ${price}
+  </span>
 
-          {showOriginalPrice && dealPrice && price !== dealPrice && (
-            <span className="text-gray-400 line-through">${price}</span>
-          )}
-        </div>
+  {showDiscount && showOriginalPrice && (
+    <span className="text-gray-400 line-through">
+      ${originalPrice}
+    </span>
+  )}
+</div>
 
         {/* Action Button */}
         {showCartButton && (
