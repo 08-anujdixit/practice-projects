@@ -1,10 +1,11 @@
 # Full Stack Blog & News Platform
-
 A modern web application that combines community blogging with real-time news updates. Users can create, manage, edit, and delete their own blog posts while also exploring the latest news articles fetched from an external API.
 
 The project is built using React for the frontend and Appwrite for authentication, database management, and file storage.
 
 ---
+
+**[🔗 Live Demo](https://08-anujdixit.github.io/practice-projects/)**
 
 ## Features
 
