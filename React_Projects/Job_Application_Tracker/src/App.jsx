@@ -2,15 +2,19 @@ import { useState } from 'react'
 import  {ApplicationForm, ApplicationList, Navbar, SearchFilter, Stats}  from './Components/index.js'
 
 function App() {
+  const [application, setApplications] = useState([]);
 
+  const addApplication = (newApplication)=>{
+    setApplications((prev)=>[...prev, newApplication]);
+  };
 
   return (
     <>
     <Navbar/>
     <Stats/>
-    <ApplicationForm/>
+    <ApplicationForm onAdd={addApplication}/>
     <SearchFilter/>
-    <ApplicationList/>
+    <ApplicationList application={application}/>
     </>
   )
 }
