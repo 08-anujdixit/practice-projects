@@ -1,11 +1,14 @@
 import { useState } from 'react'
-
+import  {Navbar, Stats}  from './Components/index.js'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <><div className='text-green-600'>Hello WOrld </div></>
+    <>
+    <Navbar/>
+    <Stats/>
+    </>
   )
 }
 
