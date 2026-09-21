@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function ApplicationForm() {
+export default function ApplicationForm({ onAdd }) {
+  const [formData, setFormData] = useState({
+    company: "",
+    position: "",
+    status: "",
+    notes: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+      console.log(formData);
+    onAdd({
+      id: Date.now(),
+      ...formData,
+      time: new Date().toISOString(),
+    });
+
+    setFormData({
+      company: "",
+      position: " ",
+      status: "applied",
+      time: "",
+      notes: "",
+    });
+  };
+
   return (
     <>
       <div className="mx-auto mt-8 w-[70%]">
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            // handle form submission here
-          }}
+          onSubmit={handleSubmit}
           className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
         >
           <div className="mb-6">
@@ -36,7 +67,9 @@ export default function ApplicationForm() {
                 id="cname"
                 name="company"
                 placeholder="e.g. Google"
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none transition  focus:border-amber-500 focus:ring-2 focus:ring-indigo-100"
+                value={formData.company}
+                onChange={handleChange}
+                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none transition  focus:border-amber-500 focus:ring-2 focus:ring-indigo-100 text-black"
               />
             </div>
 
@@ -55,7 +88,9 @@ export default function ApplicationForm() {
                 id="position"
                 name="position"
                 placeholder="e.g. Frontend Developer"
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none transition  focus:border-amber-500 focus:ring-2 focus:ring-indigo-100"
+                value={formData.position}
+                onChange={handleChange}
+                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none transition  focus:border-amber-500 focus:ring-2 focus:ring-indigo-100 text-black"
               />
             </div>
 
@@ -72,7 +107,8 @@ export default function ApplicationForm() {
                 name="status"
                 id="status"
                 className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-indigo-100 text-black"
-
+                value={formData.status}
+                onChange={handleChange}
               >
                 <option value="applied">Applied</option>
                 <option value="interview">Interview</option>
@@ -95,7 +131,9 @@ export default function ApplicationForm() {
                 id="notes"
                 name="notes"
                 placeholder="Add any notes..."
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none transition  focus:border-amber-500 focus:ring-2 focus:ring-indigo-100"
+                value={formData.notes}
+                onChange={handleChange}
+                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none transition  focus:border-amber-500 focus:ring-2 focus:ring-indigo-100 text-black"
               />
             </div>
           </div>

@@ -21,7 +21,7 @@ export default function Card() {
       Position
     </p>
 
-    <p className="mt-1 break-words text-base font-semibold text-gray-700">
+    <p className="mt-1 wrap-break-words text-base font-semibold text-gray-700">
       Frontend Developer
     </p>
   </div>
