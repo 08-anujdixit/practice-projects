@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import  {ApplicationForm, Navbar, Stats}  from './Components/index.js'
+import  {ApplicationForm, ApplicationList, Navbar, SearchFilter, Stats}  from './Components/index.js'
 
 function App() {
 
@@ -9,6 +9,8 @@ function App() {
     <Navbar/>
     <Stats/>
     <ApplicationForm/>
+    <SearchFilter/>
+    <ApplicationList/>
     </>
   )
 }
