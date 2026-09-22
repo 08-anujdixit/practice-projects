@@ -16,16 +16,19 @@ function App() {
     setApplications((prev) => [...prev, newApplication]);
   };
 
+  const deleteApplication = (id) => {
+    setApplications((prev) => prev.filter((app) => app.id !== id));
+  };
+
   const filteredApplications = application.filter((app) => {
     const matchesSearch =
       app.company.toLowerCase().includes(search.toLowerCase()) ||
       app.position.toLowerCase().includes(search.toLowerCase());
 
-      const matchesStatus = statusFilter === "all" || app.status === statusFilter;
+    const matchesStatus = statusFilter === "all" || app.status === statusFilter;
 
-     return matchesSearch && matchesStatus;
+    return matchesSearch && matchesStatus;
   });
-
 
   return (
     <>
@@ -38,7 +41,10 @@ function App() {
         statusFilter={statusFilter}
         setStatusFilter={setStatusFilter}
       />
-      <ApplicationList  filteredApplications={filteredApplications}/>
+      <ApplicationList
+        filteredApplications={filteredApplications}
+        onDelete={deleteApplication}
+      />
     </>
   );
 }
