@@ -1,8 +1,8 @@
 import React from "react";
 import Card from "./ApplicationCard";
-import { useApplications } from "../Context/ApplicationContext";
-export default function ApplicationList() {
-  const{applications} = useApplications();
+// import { useApplications } from "../Context/ApplicationContext";
+export default function ApplicationList({applications}) {
+
   return (
     <div className="mx-auto mt-10 w-[70%]">
       {/* Header */}
