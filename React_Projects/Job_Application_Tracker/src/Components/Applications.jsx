@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./ApplicationCard";
 
-export default function ApplicationList({ application }) {
+export default function ApplicationList({ filteredApplications }) {
   return (
     <div className="mx-auto mt-10 w-[70%]">
       {/* Header */}
@@ -14,9 +14,9 @@ export default function ApplicationList({ application }) {
 
       {/* Application Grid */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {application?.length > 0 ? (
-          application.map((application, index) => (
-            <Card key={index} application={application} />
+        {filteredApplications?.length > 0 ? (
+          filteredApplications.map((filteredApplications, index) => (
+            <Card key={index} filteredApplications={filteredApplications} />
           ))
         ) : (
           <p>No applications added yet.</p>

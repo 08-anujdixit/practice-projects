@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function Card({ application }) {
+export default function Card({ filteredApplications }) {
    const formattedTime = new Date(
-    application.time
+    filteredApplications.time
   ).toLocaleString("en-IN", {
     day: "2-digit",
     month: "short",
@@ -15,11 +15,11 @@ export default function Card({ application }) {
       {/* Top */}
       <div className="flex min-w-0 items-start justify-between gap-3">
         <h5 className="min-w-0 truncate text-lg font-bold text-gray-900">
-          {application.company}
+          {filteredApplications.company}
         </h5>
 
         <span className="shrink-0 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-blue-900">
-          {application.status}
+          {filteredApplications.status}
         </span>
       </div>
 
@@ -30,7 +30,7 @@ export default function Card({ application }) {
         </p>
 
         <p className="mt-1 wrap-break-words text-base font-semibold text-gray-700">
-          {application.position}
+          {filteredApplications.position}
         </p>
       </div>
 
@@ -46,7 +46,7 @@ export default function Card({ application }) {
         <p className="text-xs font-medium uppercase tracking-wider text-gray-950">
           Note:
         </p>
-        <p className="text-gray-700 font-semibold">{application.notes}</p>
+        <p className="text-gray-700 font-semibold">{filteredApplications.notes}</p>
       </div>
 
       {/* Actions */}
