@@ -4,7 +4,7 @@ export default function ApplicationForm({ onAdd }) {
   const [formData, setFormData] = useState({
     company: "",
     position: "",
-    status: "",
+    status: "applied",
     notes: "",
   });
 

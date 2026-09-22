@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function Navbar() {
+export default function Navbar({application}) {
+  let total=application.length;
   return (
     <>
       <div className="flex mt-10 mx-auto w-[70%] rounded-2xl overflow-hidden shadow-lg bg-white border-2 border-amber-500">
@@ -15,7 +16,7 @@ export default function Navbar() {
         </div>
 
         <div className="p-6 w-48 flex flex-col justify-center items-center bg-gray-50 border-l">
-          <p className="text-3xl font-bold text-gray-900 mt-1">0</p>
+          <p className="text-3xl font-bold text-gray-900 mt-1">{total}</p>
           <p className="text-sm text-gray-500">Application Total</p>
 
         </div>

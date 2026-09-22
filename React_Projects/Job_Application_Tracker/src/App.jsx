@@ -10,8 +10,8 @@ function App() {
 
   return (
     <>
-    <Navbar/>
-    <Stats/>
+    <Navbar application={application}/>
+    <Stats application={application}/>
     <ApplicationForm onAdd={addApplication}/>
     <SearchFilter/>
     <ApplicationList application={application}/>
