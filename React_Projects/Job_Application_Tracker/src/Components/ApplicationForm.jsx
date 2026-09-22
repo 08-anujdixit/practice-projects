@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useApplications } from "../Context/ApplicationContext";
 
-export default function ApplicationForm({ onAdd }) {
+export default function ApplicationForm() {
+  const { addApplication } = useApplications();
+
   const [formData, setFormData] = useState({
     company: "",
     position: "",
     status: "applied",
     notes: "",
   });
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,22 +23,18 @@ export default function ApplicationForm({ onAdd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-      console.log(formData);
-    onAdd({
-      id: Date.now(),
-      ...formData,
-      time: new Date().toISOString(),
-    });
+      console.log("Application:", formData);
+    addApplication(formData);
 
     setFormData({
       company: "",
-      position: " ",
+      position: "",
       status: "applied",
       time: "",
       notes: "",
     });
   };
-
+  
   return (
     <>
       <div className="mx-auto mt-8 w-[70%]">

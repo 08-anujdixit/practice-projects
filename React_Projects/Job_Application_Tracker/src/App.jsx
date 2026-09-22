@@ -1,50 +1,46 @@
 import { useState } from "react";
+import { useApplications } from "./Context/ApplicationContext";
 import {
   ApplicationForm,
   ApplicationList,
   Navbar,
   SearchFilter,
   Stats,
-} from "./Components/index.js";
+} from "./Components";
 
 function App() {
-  const [application, setApplications] = useState([]);
+  const { applications } = useApplications();
+
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
-  const addApplication = (newApplication) => {
-    setApplications((prev) => [...prev, newApplication]);
-  };
-
-  const deleteApplication = (id) => {
-    setApplications((prev) => prev.filter((app) => app.id !== id));
-  };
-
-  const filteredApplications = application.filter((app) => {
+  const filteredApplications = applications.filter((app) => {
     const matchesSearch =
       app.company.toLowerCase().includes(search.toLowerCase()) ||
       app.position.toLowerCase().includes(search.toLowerCase());
 
-    const matchesStatus = statusFilter === "all" || app.status === statusFilter;
+    const matchesStatus =
+      statusFilter === "all" || app.status === statusFilter;
 
     return matchesSearch && matchesStatus;
   });
 
   return (
     <>
-      <Navbar application={application} />
-      <Stats application={application} />
-      <ApplicationForm onAdd={addApplication} />
+      <Navbar  />
+
+      <Stats />
+
+      <ApplicationForm />
+
       <SearchFilter
         search={search}
         setSearch={setSearch}
         statusFilter={statusFilter}
         setStatusFilter={setStatusFilter}
       />
-      <ApplicationList
-        filteredApplications={filteredApplications}
-        onDelete={deleteApplication}
-      />
+
+      <ApplicationList applications={filteredApplications} />
     </>
   );
 }

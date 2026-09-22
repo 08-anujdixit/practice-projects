@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "./ApplicationCard";
-
-export default function ApplicationList({ filteredApplications, onDelete }) {
+import { useApplications } from "../Context/ApplicationContext";
+export default function ApplicationList() {
+  const{applications} = useApplications();
   return (
     <div className="mx-auto mt-10 w-[70%]">
       {/* Header */}
@@ -14,12 +15,11 @@ export default function ApplicationList({ filteredApplications, onDelete }) {
 
       {/* Application Grid */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {filteredApplications?.length > 0 ? (
-          filteredApplications.map((filteredApplications, index) => (
+        {applications?.length > 0 ? (
+          applications.map((applications) => (
             <Card
-              key={index}
-              filteredApplications={filteredApplications}
-              onDelete={onDelete}
+              key={applications.id}
+              applications={applications}
             />
           ))
         ) : (

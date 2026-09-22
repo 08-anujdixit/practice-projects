@@ -1,15 +1,16 @@
 import React from "react";
+import { useApplications } from "../Context/ApplicationContext";
+export default function Stats() {
+  const { applications } = useApplications();
+  const offers = applications.filter((app) => app.status === "offer").length;
 
-export default function Stats({ application }) {
-  const offers = application.filter((app)=> app.status ==="offer").length;
+  const applied = applications.filter((app) => app.status === "applied").length;
 
-  const applied = application.filter((app) => app.status === "applied").length;
-
-  const interview = application.filter(
+  const interview = applications.filter(
     (app) => app.status === "interview",
   ).length;
 
-  const rejected = application.filter(
+  const rejected = applications.filter(
     (app) => app.status === "rejected",
   ).length;
   return (
@@ -23,7 +24,9 @@ export default function Stats({ application }) {
 
           <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition">
             <p className="text-sm font-medium text-gray-500">Interview</p>
-            <p className="mt-2 text-3xl font-bold text-amber-400">{interview}</p>
+            <p className="mt-2 text-3xl font-bold text-amber-400">
+              {interview}
+            </p>
           </div>
 
           <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition">

@@ -1,7 +1,10 @@
 import React from "react";
+import { useApplications } from "../Context/ApplicationContext";
+
 
 export default function Navbar({application}) {
-  let total=application.length;
+  const{applications} = useApplications();
+  let total=applications.length;
   return (
     <>
       <div className="flex mt-10 mx-auto w-[70%] rounded-2xl overflow-hidden shadow-lg bg-white border-2 border-amber-500">
